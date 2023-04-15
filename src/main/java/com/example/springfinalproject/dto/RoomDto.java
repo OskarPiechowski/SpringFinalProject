@@ -1,8 +1,12 @@
 package com.example.springfinalproject.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 public class RoomDto {
@@ -13,5 +17,6 @@ public class RoomDto {
         private boolean availability;
         private int sittingPlace;
         private int standingPlace;
-        private int lyingPlace;
+        private int roomNumber;
+
 }
