@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class PlaceDto {
+public class RoomDto {
 
         private Long id;
         private String name;
