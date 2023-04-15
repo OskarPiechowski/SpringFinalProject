@@ -1,7 +1,6 @@
 package com.example.springfinalproject.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,13 +10,15 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table
-public class Organisation {
-
+public class PlaceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    private long nip;
-    private String address;
+    private String floor;
+    private boolean availability;
+    private int sittingPlace;
+    private int standingPlace;
+    private int lyingPlace;
+
 }
