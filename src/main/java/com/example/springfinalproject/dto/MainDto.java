@@ -1,6 +1,6 @@
 package com.example.springfinalproject.dto;
 
-public class mainDto {
+public class MainDto {
     private long id;
     private String name;
 
