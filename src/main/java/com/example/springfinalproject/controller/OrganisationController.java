@@ -21,4 +21,3 @@ public class OrganisationController {
         return new OrganisationDto();
     }
 }
-
