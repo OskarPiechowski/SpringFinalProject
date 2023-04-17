@@ -2,12 +2,14 @@ package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.service.OrganisationService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("api")
 @RestController
+@AllArgsConstructor
 public class OrganisationController {
 
     private OrganisationService organisationService;
@@ -19,7 +21,7 @@ public class OrganisationController {
     public OrganisationDto findOrganisationById(@PathVariable long id) {
         return organisationService.findOrganisationById(id);
     }
-    @GetMapping("/organisations/{nip}")
+    @GetMapping("/organisations1/{nip}")
     public OrganisationDto findOrganisationByNip(@PathVariable int nip){
         return organisationService.findOrganisationByNip(nip);
     }
