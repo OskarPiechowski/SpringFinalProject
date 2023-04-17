@@ -7,6 +7,8 @@ import com.example.springfinalproject.repository.OrganisationRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class OrganisationService {
@@ -32,8 +34,13 @@ return organisationMapper.mapToDto(organisation);
         Organisation organisation = organisationRepository.findByNip(nip);
         return organisationMapper.mapToDto(organisation);
     }
-    public OrganisationDto findOrganisationByCity(String city){
-        Organisation organisation = organisationRepository.findByCity(city);
-        return organisationMapper.mapToDto(organisation);
+
+    public List<OrganisationDto> getOrganisationsByCity(String city){
+List<Organisation> organisations = organisationRepository.findByCity(city);
+return organisationMapper.mapToDtos(organisations);
+    }
+    public List<OrganisationDto> getOrganisations(){
+        List<Organisation> organisations = organisationRepository.findAll();
+        return organisationMapper.mapToDtos(organisations);
     }
 }
