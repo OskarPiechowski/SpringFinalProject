@@ -5,20 +5,18 @@ import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.mapper.OrganisationMapper;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class OrganisationService {
 
     private OrganisationMapper organisationMapper;
     private final OrganisationRepository organisationRepository;
-
-    public OrganisationService(OrganisationRepository organisationRepository) {
-        this.organisationRepository = organisationRepository;
-    }
 
     public void addOrganisation(OrganisationDto dto) {
         Organisation organisation = organisationMapper.mapToEntity(dto);
