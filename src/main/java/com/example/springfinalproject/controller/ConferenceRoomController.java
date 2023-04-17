@@ -4,27 +4,24 @@ import com.example.springfinalproject.dto.ConferenceRoomDto;
 import com.example.springfinalproject.service.ConferenceRoomService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("api")
 @AllArgsConstructor
 public class ConferenceRoomController {
 
     private ConferenceRoomService conferenceRoomService;
 
-
-    @GetMapping("/api/conferenceRoom")
-    public ConferenceRoomDto getConferenceRoom(){
-return new ConferenceRoomDto();
-    }
-    @GetMapping("/api/conferenceRooms")
-    public List<ConferenceRoomDto> getAllConferenceRooms(){
-return conferenceRoomService.allRooms();
+    @GetMapping("/list")
+    public ResponseEntity<List<ConferenceRoomDto>> getAllConferenceRoom(){
+        return ResponseEntity.ok().body(conferenceRoomService.getConferenceRoomList());
     }
 
-    @PostMapping("/api/add")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.ACCEPTED)
     void createRoom(@RequestBody ConferenceRoomDto conferenceRoomDto) {
         conferenceRoomService.addRoom(conferenceRoomDto);
