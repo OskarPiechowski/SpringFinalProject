@@ -4,6 +4,8 @@ import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.service.OrganisationService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class OrganisationController {
 
@@ -12,12 +14,6 @@ public class OrganisationController {
     public void addOrganisation(OrganisationDto request) {
         organisationService.addOrganisation(request);
     }
-
-//    @DeleteMapping("/api/organisation/delete")
-//    public ResponseEntity<ApiResponse> deleteOrganisation(@PathVariable("organisation_id") int organisationId) {
-//        return new ResponseEntity<ApiResponse>(true, "organisation deleted");
-//    }
-
     @GetMapping("/api/organisations/{id}")
     public OrganisationDto findOrganisationById(@PathVariable long id) {
         return organisationService.findOrganisationById(id);
@@ -26,8 +22,11 @@ public class OrganisationController {
     public OrganisationDto findOrganisationByNip(@PathVariable int nip){
         return organisationService.findOrganisationByNip(nip);
     }
-    @GetMapping("/api/organisations/{city}")
-    public OrganisationDto findOrganisationByCity(@PathVariable String city){
-        return organisationService.findOrganisationByCity(city);
+    @GetMapping("/api/organisations/")
+    public List<OrganisationDto> getOrganisationByCity(String city){
+        if(city == null){
+return organisationService.getOrganisations();
+        }
+        return organisationService.getOrganisationsByCity(city);
     }
 }

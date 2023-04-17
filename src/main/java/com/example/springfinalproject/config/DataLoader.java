@@ -34,5 +34,6 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
         organisation1.setNip(7732457725L);
         organisation1.setCity("Łódź");
         organisation1.setPostcode(93-208);
+        organizationRepository.save(organisation1);
     }
 }
