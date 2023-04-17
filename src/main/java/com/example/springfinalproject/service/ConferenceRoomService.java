@@ -10,6 +10,9 @@ import java.util.List;
 @Transactional
 public class ConferenceRoomService {
 
+    public ConferenceRoomService() {
+    }
+
     public List<ConferenceRoomDto> allRooms() {
         return List.of(
                 new ConferenceRoomDto(2L, "Room 2", "2", true, 100, 50, 2),

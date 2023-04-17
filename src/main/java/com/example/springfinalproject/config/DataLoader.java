@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-
 public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
     private ConferenceRoomRepository roomRepository;

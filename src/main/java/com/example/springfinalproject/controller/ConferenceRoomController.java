@@ -10,10 +10,10 @@ import java.util.List;
 @RestController
 public class ConferenceRoomController {
 
-    private ConferenceRoomService conferenceRoomService;
+    private ConferenceRoomService conferenceRoomService = new ConferenceRoomService();
+
 
 @GetMapping("/api/conferenceRoom")
-
     public ConferenceRoomDto getConferenceRoom(){
 return new ConferenceRoomDto();
     }
