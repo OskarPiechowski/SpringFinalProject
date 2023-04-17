@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class RoomDto {
+public class ConferenceRoomDto {
 
         private Long id;
         private String name;

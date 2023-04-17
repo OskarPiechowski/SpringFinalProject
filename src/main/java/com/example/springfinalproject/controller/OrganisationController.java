@@ -2,7 +2,6 @@ package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.service.OrganisationService;
-import com.example.springfinalproject.service.OrganisationService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +18,16 @@ public class OrganisationController {
 //        return new ResponseEntity<ApiResponse>(true, "organisation deleted");
 //    }
 
-    @GetMapping("/api/organisation")
-    public OrganisationDto getOrganisation() {
-        return new OrganisationDto();
+    @GetMapping("/api/organisations/{id}")
+    public OrganisationDto findOrganisationById(@PathVariable long id) {
+        return organisationService.findOrganisationById(id);
+    }
+    @GetMapping("/api/organisations/{nip}")
+    public OrganisationDto findOrganisationByNip(@PathVariable int nip){
+        return organisationService.findOrganisationByNip(nip);
+    }
+    @GetMapping("/api/organisations/{city}")
+    public OrganisationDto findOrganisationByCity(@PathVariable String city){
+        return organisationService.findOrganisationByCity(city);
     }
 }
