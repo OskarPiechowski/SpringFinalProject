@@ -29,7 +29,7 @@ public class Room {
     private int bed;
     private int projector;
     //TODO zmienić nazwę pola
-    private int zaslepka;
+    private byte[] view;
     private boolean isRoomForRenting;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;

@@ -29,7 +29,6 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
         roomEntity.setStandingPlace(100);
         roomEntity.setBed(10);
         roomEntity.setProjector(2);
-        roomEntity.setZaslepka(1);
         roomEntity.setRoomForRenting(true);
         roomEntity.setPricePerHour(new BigDecimal(200));
         roomEntity.setPricePerDay(new BigDecimal(800));
