@@ -14,17 +14,17 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomController {
 
-    private RoomService conferenceRoomService;
+    private RoomService roomService;
 
     @GetMapping("/list")
     public ResponseEntity<List<RoomDto>> getAllConferenceRoom(){
-        return ResponseEntity.ok().body(conferenceRoomService.getConferenceRoomList());
+        return ResponseEntity.ok().body(roomService.getConferenceRoomList());
     }
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    void createRoom(@RequestBody RoomDto conferenceRoomDto) {
-        conferenceRoomService.addRoom(conferenceRoomDto);
+    void createRoom(@RequestBody RoomDto roomDto) {
+        roomService.addRoom(roomDto);
     }
     //@GetMapping("/api/rooms/{number}")
 //public RoomDto getRoomByNumber(@PathVariable int number){

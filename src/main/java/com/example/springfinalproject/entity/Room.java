@@ -27,7 +27,7 @@ public class Room {
     private int table;
 //    @Column(name = "standing_places")
     private int standingPlace;
-    @Column(name = "beds")
+//    @Column(name = "beds")
     private int bed;
 //    @Column(name = "projectors")
     private int projector;
