@@ -1,9 +1,9 @@
 package com.example.springfinalproject.config;
 
 import com.example.springfinalproject.entity.Organisation;
-import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.Room;
 import com.example.springfinalproject.repository.OrganisationRepository;
-import com.example.springfinalproject.repository.ConferenceRoomRepository;
+import com.example.springfinalproject.repository.RoomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
-    private ConferenceRoomRepository roomRepository;
+    private RoomRepository roomRepository;
     private OrganisationRepository organizationRepository;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        ConferenceRoom roomEntity = new ConferenceRoom();
+        Room roomEntity = new Room();
         roomEntity.setName("Room 1");
         roomRepository.save(roomEntity);
 
