@@ -26,9 +26,11 @@ public class RoomController {
     void createRoom(@RequestBody RoomDto roomDto) {
         roomService.addRoom(roomDto);
     }
-    //@GetMapping("/api/rooms/{number}")
-//public RoomDto getRoomByNumber(@PathVariable int number){
-//    return roomService.getRoomNumber(number);
-//}
+
+    @GetMapping("/{id}")
+    public RoomDto findRoomById(@PathVariable Long id){
+        RoomDto roomDto = roomService.getRoomById(id);
+        return roomDto;
+    }
 
 }

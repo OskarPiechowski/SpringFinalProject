@@ -29,11 +29,11 @@ public class RoomMapper {
                 .floor(room.getFloor())
                 .availability(room.isAvailability())
                 .sits(room.getSits())
-                .table(room.getTable())
+                .whiteboard(room.getWhiteboard())
                 .standingPlace(room.getStandingPlace())
                 .bed(room.getBed())
                 .projector(room.getProjector())
-                .schema(room.getSchema())
+                .zaslepka(room.getZaslepka())
                 .isRoomForRenting(room.isRoomForRenting())
                 .pricePerHour(room.getPricePerHour())
                 .pricePerDay(room.getPricePerDay())
@@ -46,11 +46,11 @@ public class RoomMapper {
                 roomDto.getFloor(),
                 roomDto.isAvailability(),
                 roomDto.getSits(),
-                roomDto.getTable(),
+                roomDto.getWhiteboard(),
                 roomDto.getStandingPlace(),
                 roomDto.getBed(),
                 roomDto.getProjector(),
-                roomDto.getSchema(),
+                roomDto.getZaslepka(),
                 roomDto.isRoomForRenting(),
                 roomDto.getPricePerHour(),
                 roomDto.getPricePerDay()

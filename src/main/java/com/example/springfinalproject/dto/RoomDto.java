@@ -1,6 +1,5 @@
 package com.example.springfinalproject.dto;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -17,16 +16,16 @@ public class RoomDto {
         private String floor;
         private boolean availability;
         private int sits;
-        private int table;
+        private int whiteboard;
 
         private int standingPlace;
 
         private int bed;
 
         private int projector;
-        private int schema;
+        //TODO zmienić nazwę pola
+        private int zaslepka;
         private boolean isRoomForRenting;
         private BigDecimal pricePerHour;
-
         private BigDecimal pricePerDay;
 }

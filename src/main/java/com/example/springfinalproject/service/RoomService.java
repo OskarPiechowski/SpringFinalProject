@@ -16,28 +16,26 @@ import java.util.List;
 @Transactional
 public class RoomService {
 
-    private RoomRepository conferenceRoomRepository;
-    private RoomMapper conferenceRoomMapper;
+    private RoomRepository roomRepository;
+    private RoomMapper roomMapper;
 
-    public void addRoom(RoomDto conferenceRoomDto){
-        Room conferenceRoom = conferenceRoomMapper.mapToEntity(conferenceRoomDto);
-        conferenceRoomRepository.save(conferenceRoom);
+    public void addRoom(RoomDto roomDto){
+        Room conferenceRoom = roomMapper.mapToEntity(roomDto);
+        roomRepository.save(conferenceRoom);
     }
 
     public List<RoomDto> getConferenceRoomList(){
         List<RoomDto> conferenceRoomDtos = new ArrayList<>();
-        List<Room> conferenceRooms = conferenceRoomRepository.findAll();
+        List<Room> conferenceRooms = roomRepository.findAll();
         for (Room conferenceRoom : conferenceRooms){
-            conferenceRoomDtos.add(conferenceRoomMapper.mapToDto(conferenceRoom));
+            conferenceRoomDtos.add(roomMapper.mapToDto(conferenceRoom));
         }
         return conferenceRoomDtos;
     }
-//    public List<RoomDto> allRooms() {
-//        return List.of(
-//                new RoomDto(2L, "Room 2", "2", true, 100, 50, 2),
-//                new RoomDto(3L, "Room 3", "3", true, 200, 150, 3),
-//                new RoomDto(4L, "Room 4",  "4", true, 300, 250, 4)
-//        );
-//    }
+
+    public RoomDto getRoomById(Long id) {
+        Room room = roomRepository.findById(id).orElseThrow(()->new NullPointerException("Room does not exist"));
+        return roomMapper.mapToDto(room);
+    }
 
 }

@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
+@Table(name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +24,13 @@ public class Room {
     private String floor;
     private boolean availability;
     private int sits;
-//    @Column(name = "tables")
-    private int table;
-//    @Column(name = "standing_places")
+    private int whiteboard;
     private int standingPlace;
-//    @Column(name = "beds")
     private int bed;
-//    @Column(name = "projectors")
     private int projector;
-    private int schema;
+    //TODO zmienić nazwę pola
+    private int zaslepka;
     private boolean isRoomForRenting;
-//    @Column(name = "price_per_hour")
     private BigDecimal pricePerHour;
-//    @Column(name = "price_per_day")
     private BigDecimal pricePerDay;
 }
