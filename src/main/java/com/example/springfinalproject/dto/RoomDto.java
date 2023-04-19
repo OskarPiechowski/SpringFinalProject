@@ -17,14 +17,9 @@ public class RoomDto {
         private boolean availability;
         private int sits;
         private int whiteboard;
-
         private int standingPlace;
-
-
         private int bed;
-
         private int projector;
-        //TODO zmienić nazwę pola
         private byte[] view;
         private boolean isRoomForRenting;
         private BigDecimal pricePerHour;

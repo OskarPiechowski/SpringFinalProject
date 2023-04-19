@@ -9,15 +9,15 @@ import java.util.List;
 @Component
 public class RoomMapper {
 
-    public List<RoomDto> mapToDtos(List<Room> conferenceRooms){
-        return conferenceRooms.stream()
+    public List<RoomDto> mapToDtos(List<Room> rooms){
+        return rooms.stream()
                 .map(p -> mapToDto(p))
                 .toList();
     }
 
 
-    public List<Room> mapToEntities(List<RoomDto> conferenceRoomDtos){
-        return conferenceRoomDtos.stream()
+    public List<Room> mapToEntities(List<RoomDto> roomDtos){
+        return roomDtos.stream()
                 .map(p -> mapToEntity(p))
                 .toList();
     }

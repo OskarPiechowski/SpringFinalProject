@@ -20,17 +20,17 @@ public class RoomService {
     private RoomMapper roomMapper;
 
     public void addRoom(RoomDto roomDto){
-        Room conferenceRoom = roomMapper.mapToEntity(roomDto);
-        roomRepository.save(conferenceRoom);
+        Room room = roomMapper.mapToEntity(roomDto);
+        roomRepository.save(room);
     }
 
-    public List<RoomDto> getConferenceRoomList(){
-        List<RoomDto> conferenceRoomDtos = new ArrayList<>();
-        List<Room> conferenceRooms = roomRepository.findAll();
-        for (Room conferenceRoom : conferenceRooms){
-            conferenceRoomDtos.add(roomMapper.mapToDto(conferenceRoom));
+    public List<RoomDto> getRoomList(){
+        List<RoomDto> roomDtos = new ArrayList<>();
+        List<Room> rooms = roomRepository.findAll();
+        for (Room room : rooms){
+            roomDtos.add(roomMapper.mapToDto(room));
         }
-        return conferenceRoomDtos;
+        return roomDtos;
     }
 
     public RoomDto getRoomById(Long id) {

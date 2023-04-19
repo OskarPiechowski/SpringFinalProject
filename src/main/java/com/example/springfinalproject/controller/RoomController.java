@@ -17,8 +17,8 @@ public class RoomController {
     private RoomService roomService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<RoomDto>> getAllConferenceRoom(){
-        return ResponseEntity.ok().body(roomService.getConferenceRoomList());
+    public ResponseEntity<List<RoomDto>> findAllRooms(){
+        return ResponseEntity.ok().body(roomService.getRoomList());
     }
 
     @PostMapping("/add")
