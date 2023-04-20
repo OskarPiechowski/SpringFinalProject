@@ -32,5 +32,10 @@ public class ConferenceRoomController {
         ConferenceRoomDto conferenceRoomDto = conferenceRoomService.getConferenceRoomById(id);
         return conferenceRoomDto;
     }
+    @DeleteMapping("/del/{id}")
+    public void deleteConferenceRoom(@PathVariable Long id){
+        conferenceRoomService.remove(id);
+    }
+
 
 }
