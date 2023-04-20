@@ -7,14 +7,16 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "organisations")
+@Table
 @Builder
 @EqualsAndHashCode
 public class Organisation {
 
-    public Organisation(Long id, String name, long nip, String address, String city, int postcode) {
+    public Organisation(Long id, String name, String mail, String loginPassword, long nip, String address, String city, int postcode) {
         this.id = id;
         this.name = name;
+        this.mail = mail;
+        this.loginPassword = loginPassword;
         this.nip = nip;
         this.address = address;
         this.city = city;
@@ -34,6 +36,10 @@ public class Organisation {
     private Long id;
 
     private String name;
+
+    private String mail;
+
+    private String loginPassword;
     private long nip;
     private String address;
 

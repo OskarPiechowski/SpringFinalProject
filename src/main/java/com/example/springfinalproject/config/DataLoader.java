@@ -1,7 +1,7 @@
 package com.example.springfinalproject.config;
 
 import com.example.springfinalproject.entity.Organisation;
-import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.Room;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import com.example.springfinalproject.repository.ConferenceRoomRepository;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        ConferenceRoom roomEntity = new ConferenceRoom();
+        Room roomEntity = new Room();
         roomEntity.setName("Room 1");
         roomEntity.setFloor("1");
         roomEntity.setAvailability(true);
@@ -36,6 +36,7 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
         Organisation organisation = new Organisation();
         organisation.setName("Comarch");
+        organisation.setCity("Kraków");
         organizationRepository.save(organisation);
 
         Organisation organisation1 = new Organisation();
