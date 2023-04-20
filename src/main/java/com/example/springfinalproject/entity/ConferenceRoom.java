@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Setter
 @Entity
 @Table(name = "rooms")
-public class Room {
+public class ConferenceRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
