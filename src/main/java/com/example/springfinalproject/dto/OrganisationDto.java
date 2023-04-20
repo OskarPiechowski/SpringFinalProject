@@ -13,7 +13,6 @@ public class OrganisationDto {
     private String name;
     private String address;
     private long nip;
-
     private String city;
 
     private int postcode;

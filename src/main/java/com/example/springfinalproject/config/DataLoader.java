@@ -1,25 +1,37 @@
 package com.example.springfinalproject.config;
 
 import com.example.springfinalproject.entity.Organisation;
-import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.Room;
 import com.example.springfinalproject.repository.OrganisationRepository;
-import com.example.springfinalproject.repository.ConferenceRoomRepository;
+import com.example.springfinalproject.repository.RoomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @Component
 public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
-    private ConferenceRoomRepository roomRepository;
+    private RoomRepository roomRepository;
     private OrganisationRepository organizationRepository;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        ConferenceRoom roomEntity = new ConferenceRoom();
+        Room roomEntity = new Room();
         roomEntity.setName("Room 1");
+        roomEntity.setFloor("1");
+        roomEntity.setAvailability(true);
+        roomEntity.setSits(400);
+        roomEntity.setWhiteboard(2);
+        roomEntity.setStandingPlace(100);
+        roomEntity.setBed(10);
+        roomEntity.setProjector(2);
+        roomEntity.setRoomForRenting(true);
+        roomEntity.setPricePerHour(new BigDecimal(200));
+        roomEntity.setPricePerDay(new BigDecimal(800));
         roomRepository.save(roomEntity);
 
         Organisation organisation = new Organisation();
