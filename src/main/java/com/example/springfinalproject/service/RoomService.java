@@ -38,4 +38,7 @@ public class RoomService {
         return roomMapper.mapToDto(room);
     }
 
+    public void remove(Long id) {
+        roomRepository.deleteById(id);
+    }
 }

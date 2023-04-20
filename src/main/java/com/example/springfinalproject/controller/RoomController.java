@@ -33,4 +33,8 @@ public class RoomController {
         return roomDto;
     }
 
+    @DeleteMapping("/del/{id}")
+    public void deleteRoom(@PathVariable Long id){
+        roomService.remove(id);
+    }
 }
