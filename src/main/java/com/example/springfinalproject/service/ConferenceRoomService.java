@@ -38,4 +38,8 @@ public class ConferenceRoomService {
         return conferenceRoomMapper.mapToDto(conferenceRoom);
     }
 
+    public void remove(Long id) {
+        conferenceRoomRepository.deleteById(id);
+    }
+
 }
