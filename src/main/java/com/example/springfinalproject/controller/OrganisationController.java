@@ -34,7 +34,7 @@ public class OrganisationController {
         return organisationService.findOrganisationById(id);
     }
     @GetMapping("/organisations/nip")
-    public ResponseEntity<List<OrganisationDto>> findOrganisationByNip(@RequestParam String nip){
+    public ResponseEntity<List<OrganisationDto>> findOrganisationByNip(@RequestParam long nip){
         return ResponseEntity.ok().body(organisationService.findOrganisationByNip(nip));
     }
     @GetMapping("/organisations/")

@@ -11,14 +11,14 @@ public class RoomMapper {
 
     public List<RoomDto> mapToDtos(List<Room> rooms){
         return rooms.stream()
-                .map(p -> mapToDto(p))
+                .map(this::mapToDto)
                 .toList();
     }
 
 
     public List<Room> mapToEntities(List<RoomDto> roomDtos){
         return roomDtos.stream()
-                .map(p -> mapToEntity(p))
+                .map(this::mapToEntity)
                 .toList();
     }
 

@@ -6,16 +6,22 @@ import com.example.springfinalproject.mapper.OrganisationMapper;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @AllArgsConstructor
-public class OrganisationService {
-
+public class OrganisationService implements UserDetailsService {
     private OrganisationMapper organisationMapper;
     private final OrganisationRepository organisationRepository;
 
@@ -39,7 +45,7 @@ public class OrganisationService {
         return organisationMapper.mapToDto(organisation);
     }
 
-    public List<OrganisationDto> findOrganisationByNip(String nip) {
+    public List<OrganisationDto> findOrganisationByNip(long nip) {
         List<OrganisationDto> organisationDtos = new ArrayList<>();
         List<Organisation> organisations = organisationRepository.findByNip(nip);
         for (Organisation organisation : organisations) {
@@ -55,5 +61,18 @@ public class OrganisationService {
     public List<OrganisationDto> getOrganisations(){
         List<Organisation> organisations = organisationRepository.findAll();
         return organisationMapper.mapToDtos(organisations);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+        Organisation organisation = organisationRepository.findByNameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("Organisation not found with organisation name or email: " + usernameOrEmail));
+                Set<GrantedAuthority> authorities = organisation
+                        .getRoles()
+                        .stream()
+                        .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
+
+        return new org.springframework.security.core.userdetails.User(organisation.getEmail(),
+        organisation.getLoginPassword(),
+        authorities);
     }
 }

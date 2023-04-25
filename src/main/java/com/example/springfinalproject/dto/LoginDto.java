@@ -1,16 +1,14 @@
 package com.example.springfinalproject.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginDto {
-    private String email;
+    private String usernameOrEmail;
 
     private String loginPassword;
 }

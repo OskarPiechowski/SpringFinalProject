@@ -2,20 +2,25 @@ package com.example.springfinalproject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.Set;
 
-@NoArgsConstructor
+@Data
 @Getter
 @Setter
 @Entity
-@Table
-@Builder
+@Table(name = "organisation", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name"}),
+        @UniqueConstraint(columnNames = {"email"})
+})
+@NoArgsConstructor
 @EqualsAndHashCode
 public class Organisation {
 
-    public Organisation(Long id, String name, String mail, String loginPassword, long nip, String address, String city, int postcode) {
+
+    public Organisation(Long id, String name, String email, String loginPassword, long nip, String address, String city, int postcode) {
         this.id = id;
         this.name = name;
-        this.mail = mail;
+        this.email = email;
         this.loginPassword = loginPassword;
         this.nip = nip;
         this.address = address;
@@ -37,7 +42,7 @@ public class Organisation {
 
     private String name;
 
-    private String mail;
+    private String email;
 
     private String loginPassword;
     private long nip;
@@ -46,4 +51,9 @@ public class Organisation {
     private String city;
 
     private int postcode;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organisation_roles",
+    joinColumns = @JoinColumn(name = "organisation_Id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_Id", referencedColumnName = "id"))
+    private Set<Role> roles;
 }
