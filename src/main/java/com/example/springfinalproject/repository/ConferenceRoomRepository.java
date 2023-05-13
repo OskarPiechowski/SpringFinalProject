@@ -1,6 +1,7 @@
 package com.example.springfinalproject.repository;
 
 import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.ConferenceRoom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -9,14 +9,14 @@ public class OrganisationMapper {
 
 public List<OrganisationDto> mapToDtos(List<Organisation> organisations){
     return organisations.stream()
-            .map(p -> mapToDto(p))
+            .map(this::mapToDto)
             .toList();
 }
 
 
 public List<Organisation> mapToEntities(List<OrganisationDto> organisationDtos){
     return organisationDtos.stream()
-            .map(p -> mapToEntity(p))
+            .map(this::mapToEntity)
             .toList();
 }
 

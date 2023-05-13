@@ -1,7 +1,7 @@
 package com.example.springfinalproject.config;
 
-import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import com.example.springfinalproject.repository.ConferenceRoomRepository;
 import lombok.AllArgsConstructor;
@@ -36,6 +36,7 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
         Organisation organisation = new Organisation();
         organisation.setName("Comarch");
+        organisation.setCity("Kraków");
         organizationRepository.save(organisation);
 
         Organisation organisation1 = new Organisation();
@@ -46,5 +47,6 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
         organisation1.setCity("Łódź");
         organisation1.setPostcode(93-208);
         organizationRepository.save(organisation1);
+
     }
 }
