@@ -41,5 +41,12 @@ public class ConferenceRoomService {
     public void remove(Long id) {
         conferenceRoomRepository.deleteById(id);
     }
-
+    public List<ConferenceRoomDto> searchConferenceRoomBySits(int sits) {
+        List<ConferenceRoomDto> conferenceRoomDtos = new ArrayList<>();
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findBySits(sits);
+        for (ConferenceRoom conferenceRoom : conferenceRooms){
+            conferenceRoomDtos.add(conferenceRoomMapper.mapToDto(conferenceRoom));
+        }
+        return conferenceRoomDtos;
+    }
 }
