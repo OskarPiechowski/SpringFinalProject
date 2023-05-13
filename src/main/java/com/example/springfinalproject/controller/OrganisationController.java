@@ -28,7 +28,7 @@ public class OrganisationController {
     @GetMapping("/organisations/")
     public List<OrganisationDto> getOrganisationByCity(String city){
         if(city == null){
-return organisationService.getOrganisations();
+            return organisationService.getOrganisations();
         }
         return organisationService.getOrganisationsByCity(city);
     }
