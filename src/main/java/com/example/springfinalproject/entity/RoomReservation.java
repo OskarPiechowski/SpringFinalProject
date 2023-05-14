@@ -30,7 +30,7 @@ public class RoomReservation {
 
     @ManyToOne
     @JoinColumn(name = "room_id")
-    private Room roomId;
+    private ConferenceRoom roomId;
 
     @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
     private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class RoomReservation {
     private boolean isReservationCancelled;
 
 
-    public RoomReservation(Organisation organisation, Room roomId, List<AdditionalEquipmentReservation> additionalEquipmentReservationList,
+    public RoomReservation(Organisation organisation, ConferenceRoom roomId, List<AdditionalEquipmentReservation> additionalEquipmentReservationList,
                            Date startDate, Time startTime, Date endDate, Time endTime, BigDecimal roomReservationDiscount, boolean isReservationCancelled) {
         this.organisation = organisation;
         this.roomId = roomId;

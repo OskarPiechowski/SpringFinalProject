@@ -37,4 +37,8 @@ public class ConferenceRoom {
     private BigDecimal pricePerDay;
     @OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
     private List<RoomReservation> roomReservationList = new ArrayList<>();
+
+    public List<RoomReservation> getRoomReservationList() {
+        return roomReservationList;
+    }
 }

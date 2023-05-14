@@ -37,6 +37,7 @@ public class ConferenceRoomMapper {
                 .isRoomForRenting(conferenceRoom.isRoomForRenting())
                 .pricePerHour(conferenceRoom.getPricePerHour())
                 .pricePerDay(conferenceRoom.getPricePerDay())
+                .roomReservationList(conferenceRoom.getRoomReservationList())
                 .build();
     }
     public ConferenceRoom mapToEntity(ConferenceRoomDto conferenceRoomDto){
@@ -53,7 +54,8 @@ public class ConferenceRoomMapper {
                 conferenceRoomDto.getView(),
                 conferenceRoomDto.isRoomForRenting(),
                 conferenceRoomDto.getPricePerHour(),
-                conferenceRoomDto.getPricePerDay()
+                conferenceRoomDto.getPricePerDay(),
+                conferenceRoomDto.getRoomReservationList()
         );
     }
 }
