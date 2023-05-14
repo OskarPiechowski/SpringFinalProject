@@ -65,14 +65,15 @@ public class OrganisationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        Organisation organisation = organisationRepository.findByNameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("Organisation not found with organisation name or email: " + usernameOrEmail));
+      /*  Organisation organisation = organisationRepository.findByNameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("Organisation not found with organisation name or email: " + usernameOrEmail));
                 Set<GrantedAuthority> authorities = organisation
-                        .getRoles()
+                        //.getRoles()
                         .stream()
                         .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
 
         return new org.springframework.security.core.userdetails.User(organisation.getEmail(),
         organisation.getLoginPassword(),
-        authorities);
+        authorities);*/
+        return null;
     }
 }

@@ -28,9 +28,9 @@ public class AdditionalEquipmentReservation {
 //    @JoinColumn(name = "room_reservation_id")
 //    private RoomReservation roomReservation;
 //
-//    @ManyToOne
-//    @JoinColumn(name = "additional_equipment_id")
-//    private AdditionalEquipment additionalEquipment;
+    @ManyToOne
+    @JoinColumn(name = "additional_equipment_id")
+    private AdditionalEquipment additionalEquipment;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "organisation_id")

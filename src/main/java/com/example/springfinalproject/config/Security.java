@@ -32,9 +32,13 @@ public class Security {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.csrf().disable()
-                .authorizeHttpRequests((authorize) -> authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                        .requestMatchers("/api/authorisation/**")
-                        .permitAll().anyRequest().authenticated());
+                .headers().disable() //for console
+                .authorizeHttpRequests((authorize) ->
+                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                .requestMatchers("/console").permitAll()
+                        .requestMatchers("/api/authorisation/**").permitAll()
+                                .anyRequest().permitAll())
+                .formLogin();
         return httpSecurity.build();
     }
 }
