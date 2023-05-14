@@ -20,9 +20,9 @@ public class Authorisation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "organisation_id")
-//    private Organisation organisation;
+    @ManyToOne
+    @JoinColumn(name = "organisation_id")
+    private Organisation organisation;
 
     @Column(unique = true)
     private String login;

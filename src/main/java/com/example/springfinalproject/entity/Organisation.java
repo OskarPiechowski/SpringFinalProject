@@ -30,23 +30,20 @@ public class Organisation {
     private String city;
     private int postcode;
 
-
-
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "organisation_roles",
     joinColumns = @JoinColumn(name = "organisation_Id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_Id", referencedColumnName = "id"))
     private Set<Role> roles;
-//
-//    @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
-//    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "room_reservation", fetch = FetchType.EAGER)
-//    private List<RoomReservation> reservationList = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "authorisation", fetch = FetchType.EAGER)
-//    private List<Authorisation> authorisationList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<RoomReservation> reservationList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<Authorisation> authorisationList = new ArrayList<>();
 
 
     public Organisation(Long id, String name, String email, String loginPassword, long nip, String address, String city, int postcode) {
@@ -67,7 +64,4 @@ public class Organisation {
         this.city = city;
         this.postcode = postcode;
     }
-
-
-
 }

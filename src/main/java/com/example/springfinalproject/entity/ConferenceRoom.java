@@ -26,19 +26,13 @@ public class ConferenceRoom {
     private String floor;
     private boolean availability;
     private int sits;
-    private int whiteboard;
-    private int standingPlace;
-    private int bed;
+    private int bench;
     private int projector;
     // TODO zmienić nazwę pola
-    private byte[] view;
-    private boolean isRoomForRenting;
+    private String pictureFile;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;
-//    @OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
-//    private List<RoomReservation> roomReservationList = new ArrayList<>();
+    @OneToMany(mappedBy = "roomId", fetch = FetchType.EAGER)
+    private List<RoomReservation> roomReservationList = new ArrayList<>();
 
-//    public List<RoomReservation> getRoomReservationList() {
-//        return roomReservationList;
-//    }
 }

@@ -24,17 +24,17 @@ public class AdditionalEquipmentReservation {
 
     // TODO konstruktory
 
-//    @ManyToOne
-//    @JoinColumn(name = "room_reservation_id")
-//    private RoomReservation roomReservation;
-//
+    @ManyToOne
+    @JoinColumn(name = "room_reservation_id")
+    private RoomReservation roomReservation;
+
     @ManyToOne
     @JoinColumn(name = "additional_equipment_id")
     private AdditionalEquipment additionalEquipment;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "organisation_id")
-//    private Organisation organisation;
+
+    @ManyToOne
+    @JoinColumn(name = "organisation_id")
+    private Organisation organisation;
 
     @Column(name = "start_date")
     private Date startDate;

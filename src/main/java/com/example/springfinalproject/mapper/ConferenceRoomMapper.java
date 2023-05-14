@@ -29,15 +29,12 @@ public class ConferenceRoomMapper {
                 .floor(conferenceRoom.getFloor())
                 .availability(conferenceRoom.isAvailability())
                 .sits(conferenceRoom.getSits())
-                .whiteboard(conferenceRoom.getWhiteboard())
-                .standingPlace(conferenceRoom.getStandingPlace())
-                .bed(conferenceRoom.getBed())
+                .bench(conferenceRoom.getBench())
                 .projector(conferenceRoom.getProjector())
-                .view(conferenceRoom.getView())
-                .isRoomForRenting(conferenceRoom.isRoomForRenting())
+                .pictureFile(conferenceRoom.getPictureFile())
                 .pricePerHour(conferenceRoom.getPricePerHour())
                 .pricePerDay(conferenceRoom.getPricePerDay())
-                //.roomReservationList(conferenceRoom.getRoomReservationList())
+                .roomReservationList(conferenceRoom.getRoomReservationList())
                 .build();
     }
     public ConferenceRoom mapToEntity(ConferenceRoomDto conferenceRoomDto){
@@ -47,15 +44,12 @@ public class ConferenceRoomMapper {
                 conferenceRoomDto.getFloor(),
                 conferenceRoomDto.isAvailability(),
                 conferenceRoomDto.getSits(),
-                conferenceRoomDto.getWhiteboard(),
-                conferenceRoomDto.getStandingPlace(),
-                conferenceRoomDto.getBed(),
+                conferenceRoomDto.getBench(),
                 conferenceRoomDto.getProjector(),
-                conferenceRoomDto.getView(),
-                conferenceRoomDto.isRoomForRenting(),
+                conferenceRoomDto.getPictureFile(),
                 conferenceRoomDto.getPricePerHour(),
-                conferenceRoomDto.getPricePerDay()
-              //  conferenceRoomDto.getRoomReservationList()
+                conferenceRoomDto.getPricePerDay(),
+                conferenceRoomDto.getRoomReservationList()
         );
     }
 }

@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,28 +26,28 @@ public class RoomReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "organisation_id")
-//    private Organisation organisation;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "room_id")
-//    private ConferenceRoom roomId;
-//
-//    @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
-//    private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "organisation_id")
+    private Organisation organisation;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private ConferenceRoom roomId;
+
+    @OneToMany(mappedBy = "roomReservation", fetch = FetchType.EAGER)
+    private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "start_time")
-    private Time startTime;
+    private LocalTime startTime;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "end_time")
-    private Time endTime;
+    private LocalTime endTime;
 
     @Column(name = "room_reservation_discount")
     private BigDecimal roomReservationDiscount;
