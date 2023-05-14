@@ -17,8 +17,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "rooms")
-public class Room {
+@Table(name = "conference_rooms")
+public class ConferenceRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

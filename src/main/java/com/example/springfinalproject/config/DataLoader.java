@@ -1,9 +1,9 @@
 package com.example.springfinalproject.config;
 
+import com.example.springfinalproject.entity.ConferenceRoom;
 import com.example.springfinalproject.entity.Organisation;
-import com.example.springfinalproject.entity.Room;
 import com.example.springfinalproject.repository.OrganisationRepository;
-import com.example.springfinalproject.repository.RoomRepository;
+import com.example.springfinalproject.repository.ConferenceRoomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -15,12 +15,12 @@ import java.math.BigDecimal;
 @Component
 public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
-    private RoomRepository roomRepository;
+    private ConferenceRoomRepository roomRepository;
     private OrganisationRepository organizationRepository;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        Room roomEntity = new Room();
+        ConferenceRoom roomEntity = new ConferenceRoom();
         roomEntity.setName("Room 1");
         roomEntity.setFloor("1");
         roomEntity.setAvailability(true);
@@ -36,6 +36,7 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
 
         Organisation organisation = new Organisation();
         organisation.setName("Comarch");
+        organisation.setCity("Kraków");
         organizationRepository.save(organisation);
 
         Organisation organisation1 = new Organisation();
@@ -46,5 +47,6 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
         organisation1.setCity("Łódź");
         organisation1.setPostcode(93-208);
         organizationRepository.save(organisation1);
+
     }
 }
