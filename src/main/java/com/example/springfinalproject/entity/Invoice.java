@@ -22,7 +22,7 @@ public class Invoice {
     private String number;
 
     @Column(name="invoice_organisation_name")
-    private String invoice_organisation_name;
+    private String name;
 
     @Column(name="invoice_organisation_nip")
     private long nip;
