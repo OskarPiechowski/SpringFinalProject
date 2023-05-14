@@ -17,6 +17,7 @@ import java.util.Date;
 @EqualsAndHashCode
 public class AdditionalEquipmentReservation {
 
+    // komentarz
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
