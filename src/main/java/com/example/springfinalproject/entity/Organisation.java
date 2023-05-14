@@ -40,4 +40,6 @@ public class Organisation {
     private String city;
 
     private int postcode;
+// komentarz
 }
+
