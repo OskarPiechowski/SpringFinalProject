@@ -36,7 +36,7 @@ public class Invoice {
     @Column(name="invoice_organisation_postcode")
     private int postcode;
 
-    @Column(name="invoice_organisation_postcode")
+    @Column(name="room_id")
     private Long room_id;
 
 
