@@ -24,17 +24,17 @@ public class AdditionalEquipmentReservation {
 
     // TODO konstruktory
 
-    @ManyToOne
-    @JoinColumn(name = "room_reservation_id")
-    private RoomReservation roomReservation;
-
-    @ManyToOne
-    @JoinColumn(name = "additional_equipment_id")
-    private AdditionalEquipment additionalEquipment;
-
-    @ManyToOne
-    @JoinColumn(name = "organisation_id")
-    private Organisation organisation;
+//    @ManyToOne
+//    @JoinColumn(name = "room_reservation_id")
+//    private RoomReservation roomReservation;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "additional_equipment_id")
+//    private AdditionalEquipment additionalEquipment;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "organisation_id")
+//    private Organisation organisation;
 
     @Column(name = "start_date")
     private Date startDate;
@@ -48,14 +48,14 @@ public class AdditionalEquipmentReservation {
     @Column(name = "end_time")
     private Time endTime;
 
-    public AdditionalEquipmentReservation(RoomReservation roomReservation, AdditionalEquipment additionalEquipment,
-                                          Organisation organisation, Date startDate, Time startTime, Date endDate, Time endTime) {
-        this.roomReservation = roomReservation;
-        this.additionalEquipment = additionalEquipment;
-        this.organisation = organisation;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.endDate = endDate;
-        this.endTime = endTime;
-    }
+//    public AdditionalEquipmentReservation(RoomReservation roomReservation, AdditionalEquipment additionalEquipment,
+//                                          Organisation organisation, Date startDate, Time startTime, Date endDate, Time endTime) {
+//        this.roomReservation = roomReservation;
+//        this.additionalEquipment = additionalEquipment;
+//        this.organisation = organisation;
+//        this.startDate = startDate;
+//        this.startTime = startTime;
+//        this.endDate = endDate;
+//        this.endTime = endTime;
+//    }
 }

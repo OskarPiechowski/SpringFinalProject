@@ -20,9 +20,9 @@ public class Authorisation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "organisation_id")
-    private Organisation organisation;
+//    @ManyToOne
+//    @JoinColumn(name = "organisation_id")
+//    private Organisation organisation;
 
     @Column(unique = true)
     private String login;
@@ -38,13 +38,13 @@ public class Authorisation {
     @Column(name = "time_of_deactivation")
     private Instant timeOfDeactivation;
 
-    public Authorisation(Organisation organisation, String login, String password,
-                         boolean isActive, Instant timeOfCreation, Instant timeOfDeactivation) {
-        this.organisation = organisation;
-        this.login = login;
-        this.password = password;
-        this.isActive = isActive;
-        this.timeOfCreation = timeOfCreation;
-        this.timeOfDeactivation = timeOfDeactivation;
-    }
+//    public Authorisation(Organisation organisation, String login, String password,
+//                         boolean isActive, Instant timeOfCreation, Instant timeOfDeactivation) {
+//        this.organisation = organisation;
+//        this.login = login;
+//        this.password = password;
+//        this.isActive = isActive;
+//        this.timeOfCreation = timeOfCreation;
+//        this.timeOfDeactivation = timeOfDeactivation;
+//    }
 }

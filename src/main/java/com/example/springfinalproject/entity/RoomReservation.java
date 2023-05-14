@@ -24,16 +24,16 @@ public class RoomReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "organisation_id")
-    private Organisation organisation;
-
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private ConferenceRoom roomId;
-
-    @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
-    private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
+//    @ManyToOne
+//    @JoinColumn(name = "organisation_id")
+//    private Organisation organisation;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "room_id")
+//    private ConferenceRoom roomId;
+//
+//    @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
+//    private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
 
     @Column(name = "start_date")
     private Date startDate;
@@ -54,16 +54,16 @@ public class RoomReservation {
     private boolean isReservationCancelled;
 
 
-    public RoomReservation(Organisation organisation, ConferenceRoom roomId, List<AdditionalEquipmentReservation> additionalEquipmentReservationList,
-                           Date startDate, Time startTime, Date endDate, Time endTime, BigDecimal roomReservationDiscount, boolean isReservationCancelled) {
-        this.organisation = organisation;
-        this.roomId = roomId;
-        this.additionalEquipmentReservationList = additionalEquipmentReservationList;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.endDate = endDate;
-        this.endTime = endTime;
-        this.roomReservationDiscount = roomReservationDiscount;
-        this.isReservationCancelled = isReservationCancelled;
-    }
+//    public RoomReservation(Organisation organisation, ConferenceRoom roomId, List<AdditionalEquipmentReservation> additionalEquipmentReservationList,
+//                           Date startDate, Time startTime, Date endDate, Time endTime, BigDecimal roomReservationDiscount, boolean isReservationCancelled) {
+//        this.organisation = organisation;
+//        this.roomId = roomId;
+//        this.additionalEquipmentReservationList = additionalEquipmentReservationList;
+//        this.startDate = startDate;
+//        this.startTime = startTime;
+//        this.endDate = endDate;
+//        this.endTime = endTime;
+//        this.roomReservationDiscount = roomReservationDiscount;
+//        this.isReservationCancelled = isReservationCancelled;
+//    }
 }

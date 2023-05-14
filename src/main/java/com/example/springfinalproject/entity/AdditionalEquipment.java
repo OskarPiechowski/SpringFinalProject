@@ -34,15 +34,15 @@ public class AdditionalEquipment {
     @Column(name = "price_per_day")
     private BigDecimal pricePerDay;
 
-    @OneToMany(mappedBy = "additional_equipment_reservation", fetch = FetchType.EAGER)
-    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
+//    @OneToMany(mappedBy = "additional_equipment_reservations", fetch = FetchType.EAGER)
+//    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
 
-    public AdditionalEquipment(String name, int amount, BigDecimal pricePerHour, BigDecimal pricePerDay,
-                               List<AdditionalEquipmentReservation> equipmentReservationList) {
-        this.name = name;
-        this.amount = amount;
-        this.pricePerHour = pricePerHour;
-        this.pricePerDay = pricePerDay;
-        this.equipmentReservationList = equipmentReservationList;
-    }
+//    public AdditionalEquipment(String name, int amount, BigDecimal pricePerHour, BigDecimal pricePerDay,
+//                               List<AdditionalEquipmentReservation> equipmentReservationList) {
+//        this.name = name;
+//        this.amount = amount;
+//        this.pricePerHour = pricePerHour;
+//        this.pricePerDay = pricePerDay;
+//        this.equipmentReservationList = equipmentReservationList;
+//    }
 }

@@ -35,10 +35,10 @@ public class ConferenceRoom {
     private boolean isRoomForRenting;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;
-    @OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
-    private List<RoomReservation> roomReservationList = new ArrayList<>();
+//    @OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
+//    private List<RoomReservation> roomReservationList = new ArrayList<>();
 
-    public List<RoomReservation> getRoomReservationList() {
-        return roomReservationList;
-    }
+//    public List<RoomReservation> getRoomReservationList() {
+//        return roomReservationList;
+//    }
 }
