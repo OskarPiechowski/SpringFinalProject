@@ -37,5 +37,9 @@ public class ConferenceRoomController {
         conferenceRoomService.remove(id);
     }
 
-
+    @GetMapping("/searchBySits")
+    public ResponseEntity<List<ConferenceRoomDto>> findConferenceRoomBySits(@RequestParam int sits){
+        return ResponseEntity.ok().body(conferenceRoomService.searchConferenceRoomBySits(sits));
+    }
 }
+

@@ -1,8 +1,12 @@
 package com.example.springfinalproject.dto;
 
+import com.example.springfinalproject.entity.RoomReservation;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,12 +20,11 @@ public class ConferenceRoomDto {
         private String floor;
         private boolean availability;
         private int sits;
-        private int whiteboard;
-        private int standingPlace;
-        private int bed;
+        private int bench;
         private int projector;
-        private byte[] view;
-        private boolean isRoomForRenting;
+        private String pictureFile;
         private BigDecimal pricePerHour;
         private BigDecimal pricePerDay;
+        private List<RoomReservation> roomReservationList = new ArrayList<>();
+
 }

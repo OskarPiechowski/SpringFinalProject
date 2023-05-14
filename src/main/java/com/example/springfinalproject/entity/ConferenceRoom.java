@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,13 +26,13 @@ public class ConferenceRoom {
     private String floor;
     private boolean availability;
     private int sits;
-    private int whiteboard;
-    private int standingPlace;
-    private int bed;
+    private int bench;
     private int projector;
-    //TODO zmienić nazwę pola
-    private byte[] view;
-    private boolean isRoomForRenting;
+    // TODO zmienić nazwę pola
+    private String pictureFile;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;
+    @OneToMany(mappedBy = "roomId", fetch = FetchType.EAGER)
+    private List<RoomReservation> roomReservationList = new ArrayList<>();
+
 }
