@@ -1,6 +1,9 @@
 package com.example.springfinalproject.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -22,13 +25,23 @@ public class Organisation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //zapewnienie rozmiaru od 2 do 20 znaków, oba włącznie oraz to, że atrybut/pole ma mieć unikalną wartość;
+    // przez to nadaje się również na id, ale nic z tym nie robię; należy dodatkowo pamiętać, żeby w warstwie logiki aplikacji, również to sprawdzać
+    @Column(unique = true)
+    @Size(min = 2, max = 20)
     private String name;
+    @Email
     private String email;
     private String loginPassword;
-    private long nip;
+    //Zmiana na String wg sugestii Daniela o zapisie 0 z przodu, gdyby było trzeba.
+    // Jeżeli do celów przetwarzania w systemie informatycznym wymagane jest 12 cyfr, numer NIP powinien zaczynać się od liczby 16.
+    @Pattern(regexp = "^16\\d{10}$")
+    private String nip;
     private String address;
     private String city;
-    private int postcode;
+    // Zmiana na String zgodnie z sugestią Daniela. Długość 5 dowolnych cyfr
+    @Pattern(regexp = "\\d{5}")
+    private String postcode;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "organisation_roles",
@@ -46,7 +59,8 @@ public class Organisation {
     private List<Authorisation> authorisationList = new ArrayList<>();
 
 
-    public Organisation(Long id, String name, String email, String loginPassword, long nip, String address, String city, int postcode) {
+    //wydaje mi się, że konstruktor z id nie powinien istnieć, bo id jest generowane, ale to moja uwaga tylko (TW); może Spring sobie z tym poradzi i tak
+    public Organisation(Long id, String name, String email, String loginPassword, String nip, String address, String city, String postcode) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -57,7 +71,7 @@ public class Organisation {
         this.postcode = postcode;
     }
 
-    public Organisation(String name, long nip, String address, String city, int postcode) {
+    public Organisation(String name, String nip, String address, String city, String postcode) {
         this.name = name;
         this.nip = nip;
         this.address = address;
