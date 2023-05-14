@@ -2,6 +2,9 @@ package com.example.springfinalproject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -15,6 +18,32 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Organisation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+    private String loginPassword;
+    private long nip;
+    private String address;
+    private String city;
+    private int postcode;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "organisation_roles",
+    joinColumns = @JoinColumn(name = "organisation_Id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_Id", referencedColumnName = "id"))
+    private Set<Role> roles;
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<RoomReservation> reservationList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<Authorisation> authorisationList = new ArrayList<>();
 
 
     public Organisation(Long id, String name, String email, String loginPassword, long nip, String address, String city, int postcode) {
@@ -35,25 +64,4 @@ public class Organisation {
         this.city = city;
         this.postcode = postcode;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-
-    private String email;
-
-    private String loginPassword;
-    private long nip;
-    private String address;
-
-    private String city;
-
-    private int postcode;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "organisation_roles",
-    joinColumns = @JoinColumn(name = "organisation_Id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_Id", referencedColumnName = "id"))
-    private Set<Role> roles;
 }

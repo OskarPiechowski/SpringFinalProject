@@ -1,7 +1,6 @@
 package com.example.springfinalproject.config;
 
 import com.example.springfinalproject.entity.ConferenceRoom;
-import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import com.example.springfinalproject.repository.ConferenceRoomRepository;
 import lombok.AllArgsConstructor;
@@ -25,28 +24,25 @@ public class DataLoader implements ApplicationListener <ContextRefreshedEvent>{
         roomEntity.setFloor("1");
         roomEntity.setAvailability(true);
         roomEntity.setSits(400);
-        roomEntity.setWhiteboard(2);
-        roomEntity.setStandingPlace(100);
-        roomEntity.setBed(10);
+        roomEntity.setBench(2);
         roomEntity.setProjector(2);
-        roomEntity.setRoomForRenting(true);
         roomEntity.setPricePerHour(new BigDecimal(200));
         roomEntity.setPricePerDay(new BigDecimal(800));
         roomRepository.save(roomEntity);
 
-        Organisation organisation = new Organisation();
-        organisation.setName("Comarch");
-        organisation.setCity("Kraków");
-        organizationRepository.save(organisation);
-
-        Organisation organisation1 = new Organisation();
-        organisation1.setId(1L);
-        organisation1.setName("Żabka");
-        organisation1.setAddress("Zbaraska 5");
-        organisation1.setNip(7732457725L);
-        organisation1.setCity("Łódź");
-        organisation1.setPostcode(93-208);
-        organizationRepository.save(organisation1);
+//        Organisation organisation = new Organisation();
+//        organisation.setName("Comarch");
+//        organisation.setCity("Kraków");
+//        organizationRepository.save(organisation);
+//
+//        Organisation organisation1 = new Organisation();
+//        organisation1.setId(1L);
+//        organisation1.setName("Żabka");
+//        organisation1.setAddress("Zbaraska 5");
+//        organisation1.setNip(7732457725L);
+//        organisation1.setCity("Łódź");
+//        organisation1.setPostcode(93-208);
+//        organizationRepository.save(organisation1);
 
     }
 }

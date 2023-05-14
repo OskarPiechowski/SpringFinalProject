@@ -57,8 +57,8 @@ public class AuthorizationController {
         organisation.setNip(registerDto.getNip());
         organisation.setEmail(registerDto.getEmail());
         organisation.setLoginPassword(passwordEncoder.encode(registerDto.getLoginPassword()));
-        Role roles = roleRepository.findByName("ROLE_ADMIN").get();
-        organisation.setRoles(Collections.singleton(roles));
+        Role roles = roleRepository.findByName("ADMIN").get();
+       // organisation.setRoles(Collections.singleton(roles));
         organisationRepository.save(organisation);
         return new ResponseEntity<>("Organisation registered successfully", HttpStatus.OK);
     }
