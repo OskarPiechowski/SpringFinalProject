@@ -1,5 +1,6 @@
 package com.example.springfinalproject.dto;
 
+import com.example.springfinalproject.entity.AdditionalEquipment;
 import com.example.springfinalproject.entity.RoomReservation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -42,6 +43,7 @@ public class ConferenceRoomDto {
         idzie do wyposażenia dodatkowego
         private int projector;
 */
+        private AdditionalEquipment additionalEquipment;
         private String pictureFile;
         private BigDecimal pricePerHour;
         private BigDecimal pricePerDay;
