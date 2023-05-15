@@ -29,8 +29,9 @@ public class ConferenceRoomMapper {
                 .floor(conferenceRoom.getFloor())
                 .availability(conferenceRoom.isAvailability())
                 .sits(conferenceRoom.getSits())
-                .bench(conferenceRoom.getBench())
-                .projector(conferenceRoom.getProjector())
+                .standingSits(conferenceRoom.getStandingSits())
+                .layingSits(conferenceRoom.getLayingSits())
+                .hangingSits(conferenceRoom.getHangingSits())
                 .pictureFile(conferenceRoom.getPictureFile())
                 .pricePerHour(conferenceRoom.getPricePerHour())
                 .pricePerDay(conferenceRoom.getPricePerDay())
@@ -44,8 +45,9 @@ public class ConferenceRoomMapper {
                 conferenceRoomDto.getFloor(),
                 conferenceRoomDto.isAvailability(),
                 conferenceRoomDto.getSits(),
-                conferenceRoomDto.getBench(),
-                conferenceRoomDto.getProjector(),
+                conferenceRoomDto.getStandingSits(),
+                conferenceRoomDto.getLayingSits(),
+                conferenceRoomDto.getHangingSits(),
                 conferenceRoomDto.getPictureFile(),
                 conferenceRoomDto.getPricePerHour(),
                 conferenceRoomDto.getPricePerDay(),
