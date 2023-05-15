@@ -65,8 +65,6 @@ public class AdditionalEquipment {
     @Column(name = "price_per_day")
     private BigDecimal pricePerDay;
 
-    @OneToMany(mappedBy = "additionalEquipment", fetch = FetchType.EAGER)
-    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
 
 //    public AdditionalEquipment(String name, int amount, BigDecimal pricePerHour, BigDecimal pricePerDay,
 //                               List<AdditionalEquipmentReservation> equipmentReservationList) {

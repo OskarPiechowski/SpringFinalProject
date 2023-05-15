@@ -50,9 +50,6 @@ public class Organisation {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
-    private List<AdditionalEquipmentReservation> equipmentReservationList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
     private List<RoomReservation> reservationList = new ArrayList<>();
 
     @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)

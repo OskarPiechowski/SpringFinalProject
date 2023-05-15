@@ -34,9 +34,6 @@ public class RoomReservation {
     @JoinColumn(name = "room_id")
     private ConferenceRoom roomId;
 
-    @OneToMany(mappedBy = "roomReservation", fetch = FetchType.EAGER)
-    private List<AdditionalEquipmentReservation> additionalEquipmentReservationList = new ArrayList<>();
-
     @Column(name = "start_date")
     private LocalDate startDate;
 

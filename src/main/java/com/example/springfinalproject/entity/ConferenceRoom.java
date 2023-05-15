@@ -51,6 +51,9 @@ public class ConferenceRoom {
         private int projector;
         // TODO zmienić nazwę pola
     */
+    @OneToOne
+    @JoinColumn(name = "id_additional_equipment")
+    public AdditionalEquipment additionalEquipment;
     @Nullable
     private String pictureFile;
     private BigDecimal pricePerHour;
