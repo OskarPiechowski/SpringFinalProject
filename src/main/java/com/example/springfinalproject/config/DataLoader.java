@@ -59,8 +59,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             organisation.setCity("Kraków");
             organizationRepository.save(organisation);
 
+
             Organisation organisation1 = new Organisation();
-            organisation1.setId(1L);
+            organisation1.setId(2L);
             organisation1.setName("Żabka");
             organisation1.setAddress("Zbaraska 5");
             organisation1.setNip("167732457725");
@@ -80,10 +81,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                     .pricePerDay(BigDecimal.valueOf(200))
                     .build();
 
-
-
-            RoomReservation roomReservation1 = RoomReservation.builder()
-                    .organisation(organisation) // obiekt klasy Organisation
+            RoomReservation roomReservation = RoomReservation.builder()
+                    .organisation(organisation1) // obiekt klasy Organisation
                     .roomId(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 1))
                     .startTime(LocalTime.of(10, 0))
@@ -92,10 +91,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                     .roomReservationDiscount(BigDecimal.valueOf(10))
                     .isReservationCancelled(false)
                     .build();
+            roomReservationRepository.save(roomReservation);
 
-            roomReservationRepository.save(roomReservation1);
-
-            RoomReservation roomReservation2 = RoomReservation.builder()
+            RoomReservation roomReservation1 = RoomReservation.builder()
                     .organisation(organisation) // obiekt klasy Organisation
                     .roomId(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 11))
@@ -105,8 +103,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                     .roomReservationDiscount(BigDecimal.valueOf(20))
                     .isReservationCancelled(true)
                     .build();
-
-            roomReservationRepository.save(roomReservation2);
+            roomReservationRepository.save(roomReservation1);
 
         } catch (Exception exception) {
             logger.error("Wystąpił błąd podczas inicjalizacji danych, np. naruszenie ograniczenia unikalności lub inny," +
@@ -117,5 +114,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 //            System.err.println("Wystąpił błąd podczas inicjalizacji danych - naruszenie ograniczenia unikalności");
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
+
+
     }
 }
