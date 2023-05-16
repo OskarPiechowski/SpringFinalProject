@@ -32,6 +32,7 @@ public class RoomReservation {
 
     @ManyToOne
     @JoinColumn(name = "room_id")
+    //tu do zmiany jest nazwa roomId, bo Ktoś zrobił kompozycję, ale te zmiany są rozległe, więc zostawiam na jakiś czas (TW)
     private ConferenceRoom roomId;
 
     @Column(name = "start_date")
