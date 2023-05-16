@@ -1,13 +1,21 @@
 package com.example.springfinalproject.controller;
 
+import com.example.springfinalproject.dto.InvoiceDto;
+import com.example.springfinalproject.service.InvoiceService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Controller
 public class InvoiceController {
+
+    private InvoiceService invoiceService;
 
     @GetMapping("/")
     public String getMainPage(){
@@ -18,13 +26,8 @@ public class InvoiceController {
 return "new-invoice";
     }
     @PostMapping("/invoice/create")
-    public String addInvoice(String name, String address, String postcode, String city, Long nip, LocalDateTime date){
-        System.out.println(name);
-        System.out.println(address);
-        System.out.println(postcode);
-        System.out.println(city);
-        System.out.println(nip);
-        System.out.println(date);
+    public String addInvoice(InvoiceDto request){
+        invoiceService.addInvoice(request);
         return "main-page";
     }
 }

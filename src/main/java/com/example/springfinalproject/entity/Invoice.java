@@ -3,23 +3,23 @@ package com.example.springfinalproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @Getter
 @Setter
 @Entity
-@Table(name = "inovices")
+@Builder
+@Table(name = "invoices")
 public class Invoice {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="invoice_id")
-    private Integer id;
+    private long id;
     @Column(name="invoice_number")
     private String number;
     @Column(name="invoice_organisation_name")
@@ -35,10 +35,29 @@ public class Invoice {
     @Column(name="room_id")
     private Long room_id;
     @Column(name="value")
-    private double value;
+    private Double value;
     @Column(name="invoice_Date")
     private LocalDateTime date;
 
 
+    public Invoice(String name, Long nip) {
+        this.name = name;
+        this.nip = nip;
+    }
 
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", name='" + name + '\'' +
+                ", nip=" + nip +
+                ", address='" + address + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", city='" + city + '\'' +
+                ", room_id=" + room_id +
+                ", value=" + value +
+                ", date=" + date +
+                '}';
+    }
 }
