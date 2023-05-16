@@ -3,6 +3,7 @@ package com.example.springfinalproject.mapper;
 import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.entity.Organisation;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 @Component
 public class OrganisationMapper {
