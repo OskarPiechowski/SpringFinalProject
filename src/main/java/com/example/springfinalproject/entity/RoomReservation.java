@@ -1,6 +1,9 @@
 package com.example.springfinalproject.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,18 +19,22 @@ import java.time.LocalTime;
 @Table(name = "room_reservations")
 @Builder
 @EqualsAndHashCode
+@JsonIgnoreProperties("roomId")
 public class RoomReservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "organisation_id")
     private Organisation organisation;
 
+
     @ManyToOne
     @JoinColumn(name = "room_id")
+
     //tu do zmiany jest nazwa roomId, bo Ktoś zrobił kompozycję, ale te zmiany są rozległe, więc zostawiam na jakiś czas (TW)
     private ConferenceRoom roomId;
 
