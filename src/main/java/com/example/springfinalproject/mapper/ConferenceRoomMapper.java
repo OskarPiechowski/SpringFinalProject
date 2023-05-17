@@ -32,7 +32,7 @@ public class ConferenceRoomMapper {
                 .standingSits(conferenceRoom.getStandingSits())
                 .layingSits(conferenceRoom.getLayingSits())
                 .hangingSits(conferenceRoom.getHangingSits())
-                .additionalEquipment((conferenceRoom.getAdditionalEquipment()))
+                .additionalEquipment(conferenceRoom.getAdditionalEquipment())
                 .pictureFile(conferenceRoom.getPictureFile())
                 .pricePerHour(conferenceRoom.getPricePerHour())
                 .pricePerDay(conferenceRoom.getPricePerDay())
