@@ -21,11 +21,11 @@ public class InvoiceController {
     public String getMainPage(){
         return "main-page";
     }
-    @GetMapping("/invoice/create")
+    @GetMapping("/invoice")
     public String getInvoice(){
 return "new-invoice";
     }
-    @PostMapping("/invoice/create")
+    @PostMapping("/invoice")
     public String addInvoice(InvoiceDto request){
         invoiceService.addInvoice(request);
         return "main-page";
