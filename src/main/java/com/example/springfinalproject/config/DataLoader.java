@@ -84,17 +84,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             organisation1.setPostcode("93208");
             organizationRepository.save(organisation1);
 
-            //zapisywanie do dorobienia jak powstanie AdditionalEquipmentRepository - na razie nie tykam (TW)
-            AdditionalEquipment additionalEquipment = AdditionalEquipment.builder()
-                    .projectorName("Projector XYZ")
-                    .amount(5)
-                    .phone(true)
-                    .internalNumber(10)
-                    .externalNumber("+48 1234567890")
-                    .interfaceUSB(InterfaceUSB.TRUE)
-                    .pricePerHour(BigDecimal.valueOf(50))
-                    .pricePerDay(BigDecimal.valueOf(200))
-                    .build();
 
             RoomReservation roomReservation = RoomReservation.builder()
                     .organisation(organisation1) // obiekt klasy Organisation
