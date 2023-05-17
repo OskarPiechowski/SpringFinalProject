@@ -19,9 +19,10 @@ public class AdditionalEquipmentController {
     }
 
     @PostMapping("/add-equipment")
-    public String createAdditionalEquipment(AdditionalEquipmentDto additionalEquipmentDto) {
+    public String createAdditionalEquipment(AdditionalEquipmentDto additionalEquipmentDto, Model model) {
         System.out.println(additionalEquipmentDto);
         additionalEquipmentService.addAdditionalEquipment(additionalEquipmentDto);
-        return "main-page.html";
+        model.addAttribute("message", "Dosałeś wyposażenie dodatkowe");
+        return "add-additional-equipment.html";
     }
 }
