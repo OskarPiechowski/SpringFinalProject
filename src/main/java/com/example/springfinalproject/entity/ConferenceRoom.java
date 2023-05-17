@@ -1,22 +1,16 @@
 package com.example.springfinalproject.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Max;
-import org.springframework.lang.Nullable;
 
 @NoArgsConstructor
 @AllArgsConstructor
