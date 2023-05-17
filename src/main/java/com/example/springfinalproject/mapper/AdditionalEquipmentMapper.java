@@ -4,9 +4,11 @@ import com.example.springfinalproject.dto.AdditionalEquipmentDto;
 import com.example.springfinalproject.dto.ConferenceRoomDto;
 import com.example.springfinalproject.entity.AdditionalEquipment;
 import com.example.springfinalproject.entity.ConferenceRoom;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AdditionalEquipmentMapper {
     public List<AdditionalEquipmentDto> mapToDtos(List<AdditionalEquipment> additionalEquipments){
         return additionalEquipments.stream()
