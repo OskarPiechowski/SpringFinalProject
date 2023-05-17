@@ -5,6 +5,7 @@ import com.example.springfinalproject.entity.AdditionalEquipment;
 import com.example.springfinalproject.entity.ConferenceRoom;
 import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.entity.RoomReservation;
+import com.example.springfinalproject.repository.AdditionalEquipmentRepository;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import com.example.springfinalproject.repository.ConferenceRoomRepository;
 import jakarta.transaction.Transactional;
@@ -35,6 +36,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private ConferenceRoomRepository roomRepository;
     private OrganisationRepository organizationRepository;
     private RoomReservationRepository roomReservationRepository;
+    private AdditionalEquipmentRepository additionalEquipmentRepository;
 
 
     @Transactional
@@ -42,6 +44,17 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         try {
+            AdditionalEquipment additionalEquipment2 = new AdditionalEquipment();
+            additionalEquipment2.setProjectorName("Projector XYZ");
+            additionalEquipment2.setAmount(5);
+            additionalEquipment2.setPhone(true);
+            additionalEquipment2.setInternalNumber(10);
+            additionalEquipment2.setExternalNumber("+48 1234567890");
+            additionalEquipment2.setInterfaceUSB(InterfaceUSB.TRUE);
+            additionalEquipment2.setPricePerHour(BigDecimal.valueOf(50));
+            additionalEquipment2.setPricePerDay(BigDecimal.valueOf(200));
+            additionalEquipmentRepository.save(additionalEquipment2);
+
             ConferenceRoom roomEntity = new ConferenceRoom();
             roomEntity.setName("Room 1");
             roomEntity.setFloor(1);
@@ -52,7 +65,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             roomEntity.setHangingSits(100);
             roomEntity.setPricePerHour(new BigDecimal(200));
             roomEntity.setPricePerDay(new BigDecimal(800));
+            roomEntity.setAdditionalEquipment(additionalEquipment2);
             roomRepository.save(roomEntity);
+
 
             Organisation organisation = new Organisation();
             organisation.setName("Comarch");
