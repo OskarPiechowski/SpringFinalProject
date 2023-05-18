@@ -5,14 +5,20 @@ import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.time.LocalDateTime;
-@Data
 @Setter
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class InvoiceDto {
-@Column(unique = true)
+
+
+    public InvoiceDto(String name, Long nip) {
+        this.name = name;
+        this.nip = nip;
+    }
+
+    @Column(unique = true)
     private Long id;
     private String number;
     private String name;

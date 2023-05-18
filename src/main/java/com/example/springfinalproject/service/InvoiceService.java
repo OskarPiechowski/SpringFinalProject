@@ -7,14 +7,13 @@ import com.example.springfinalproject.repository.InvoiceRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-@Transactional
 @Service
 @AllArgsConstructor
 public class InvoiceService {
 private InvoiceRepository invoiceRepository;
 private InvoiceMapper invoiceMapper;
-        public void addInvoice(InvoiceDto dto) {
-                Invoice invoice = invoiceMapper.mapToEntity(dto);
+        public void addInvoice(InvoiceDto request) {
+                Invoice invoice = invoiceMapper.mapToEntity(request);
                 invoiceRepository.save(invoice);
 
 }
