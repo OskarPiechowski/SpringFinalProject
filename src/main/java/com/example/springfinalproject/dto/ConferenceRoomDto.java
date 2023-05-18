@@ -2,7 +2,6 @@ package com.example.springfinalproject.dto;
 
 import com.example.springfinalproject.entity.AdditionalEquipment;
 import com.example.springfinalproject.entity.RoomReservation;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

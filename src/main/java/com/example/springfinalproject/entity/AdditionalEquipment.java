@@ -10,8 +10,6 @@ import lombok.*;
 import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
