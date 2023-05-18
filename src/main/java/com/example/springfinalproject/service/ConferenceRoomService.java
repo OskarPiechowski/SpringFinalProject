@@ -49,4 +49,17 @@ public class ConferenceRoomService {
         }
         return conferenceRoomDtos;
     }
+
+    public List<ConferenceRoomDto> getAllRooms() {
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAll();
+        List<ConferenceRoomDto> conferenceRoomDtos = new ArrayList<>();
+        for (ConferenceRoom conferenceRoom : conferenceRooms) {
+            conferenceRoomDtos.add(conferenceRoomMapper.mapToDto(conferenceRoom));
+        }
+        return conferenceRoomDtos;
+    }
+
+    public List<ConferenceRoomDto> getAllRoomDtos() {
+        return getAllRooms();
+    }
 }
