@@ -1,9 +1,5 @@
 package com.example.springfinalproject.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +15,6 @@ import java.time.LocalTime;
 @Table(name = "room_reservations")
 @Builder
 @EqualsAndHashCode
-@JsonIgnoreProperties("roomId")
 public class RoomReservation {
 
     @Id
