@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Additional Equipment</title>
+</head>
+<body>
+<form action="/add-equipment" method="post">
+    <h1>ADDITIONAL EQUIPMENT</h1>
+    <label>Projector:</label>
+    <input type="text" name="projectorName">
+    <br>
+    <label>Amount:</label>
+    <input type="number" name="amount">
+    <br>
+    <label>Phone:</label>
+    <input type="checkbox" name="phone">
+    <br>
+    <label>InternalNumber:</label>
+    <input type="number" name="internalNumber">
+    <br>
+    <label>ExternalNumber:</label>
+    <input type="text" name="externalNumber">
+    <br>
+    <label>USB Interface:</label>
+    <label>NON</label>
+    <input type="radio" name="Interface_USB" value="NULL">
+    <label>FALSE</label>
+    <input type="radio" name="Interface_USB" value="FALSE">
+    <label>TRUE</label>
+    <input type="radio" name="Interface_USB" value="TRUE">
+    <br>
+    <label>Price per hour:</label>
+    <input type="number" name="pricePerHour">
+    <br>
+    <label>Price per day:</label>
+    <input type="number" name="pricePerDay">
+    <h1 th:text="${message}"></h1>
+    <br>
+    <br>
+    <button type="submit">Dodaj</button>
+</form>
+<a href="/add-equipment" >Back to homepage</a>
+</body>
+</html>
