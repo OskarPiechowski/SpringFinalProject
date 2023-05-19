@@ -13,15 +13,18 @@
     <label>Amount:</label>
     <span th:text="${equipments.getAmount()}"></span> <br>
     <label>Phone:</label>
-    <span th:text="${equipments.isPhone()}"></span>
-<!--    <span th:text="${equipments.getInternalNumber()}"></span>-->
-<!--    <span th:text="${equipments.getExternalNumber()()}"></span> <br>-->
-<!--    <label>Interface USB: </label>-->
-<!--    <span th:text="${equipments.getInterfaceUSB()}"></span> <br>-->
-<!--    <label>Price per hour:</label>-->
-<!--    <span th:text="${equipments.getPricePerHour()}"></span> <br>-->
-<!--    <label>Price per day:</label>-->
-<!--    <span th:text="${equipments.getPricePerDay()}"></span> <br>-->
+    <span th:text="${equipments.isPhone()}"></span> <br>
+    <label>Internal number:</label>
+    <span th:text="${equipments.getInternalNumber()}"></span> <br>
+    <label>External number:</label>
+    <span th:text="${equipments.getExternalNumber()}"></span> <br>
+    <label>Interface USB: </label>
+    <span th:text="${equipments.getInterfaceUSB()}"></span> <br>
+    <label>Price per hour:</label>
+    <span th:text="${equipments.getPricePerHour()}"></span> <br>
+    <label>Price per day:</label>
+    <span th:text="${equipments.getPricePerDay()}"></span> <br>
+    <hr>
   </li>
 </ol>
 </body>
