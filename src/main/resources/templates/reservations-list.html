@@ -9,7 +9,7 @@
     <li th:each="reservation : ${reservations}">
         <label>Reservation ID:</label>
         <span th:text="${reservation.id}"></span> <br>
-        <label>Reservation Start Date/Time:</label>
+        <label>Reservation start Date/Time:</label>
         <span th:text="${reservation.startDate}"></span>
         <span th:text="${reservation.startTime}"></span> <br>
         <label>Reservation End Date/Time:</label>
@@ -18,12 +18,12 @@
         <label>Cancelled: </label>
         <span th:text="${reservation.isReservationCancelled()}"></span> <br>
         <hr>
-        <label>Room ID:</label>
+        <label>Room name:</label>
         <span th:text="${reservation.roomId.name}"></span> <br>
         <hr>
         <label>Organisation: </label>
         <span th:text="${reservation.organisation.name}"></span> <br>
-        <label>Discount:"</label>
+        <label>Discount:</label>
         <span th:text="${reservation.roomReservationDiscount}"></span>
         <hr>
     </li>

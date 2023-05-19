@@ -1,6 +1,5 @@
 package com.example.springfinalproject.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,12 +21,15 @@ public class RoomReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "organisation_id")
     private Organisation organisation;
 
+
     @ManyToOne
     @JoinColumn(name = "room_id")
+
     //tu do zmiany jest nazwa roomId, bo Ktoś zrobił kompozycję, ale te zmiany są rozległe, więc zostawiam na jakiś czas (TW)
     private ConferenceRoom roomId;
 

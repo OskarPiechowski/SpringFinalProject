@@ -1,5 +1,6 @@
 package com.example.springfinalproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
@@ -20,6 +21,7 @@ import java.util.Set;
 })
 @NoArgsConstructor
 @EqualsAndHashCode
+@JsonIgnoreProperties("reservationList")
 public class Organisation {
 
     @Id
@@ -52,6 +54,7 @@ public class Organisation {
     @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
     private List<RoomReservation> reservationList = new ArrayList<>();
 
+//    @JsonBackReference
     @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
     private List<Authorisation> authorisationList = new ArrayList<>();
 

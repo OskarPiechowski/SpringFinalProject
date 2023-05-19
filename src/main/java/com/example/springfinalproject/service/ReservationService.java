@@ -35,4 +35,7 @@ public class ReservationService {
     public void deleteById(int id) {
         reservationRepository.deleteById(id);
     }
+
+    public void createReservation(RoomReservation reservation) {
+    }
 }

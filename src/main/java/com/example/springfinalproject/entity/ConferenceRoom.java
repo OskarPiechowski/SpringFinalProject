@@ -1,5 +1,6 @@
 package com.example.springfinalproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -19,6 +20,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "conference_rooms")
+@JsonIgnoreProperties("roomReservationList")
 public class ConferenceRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
