@@ -9,6 +9,9 @@ import com.example.springfinalproject.repository.AdditionalEquipmentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class AdditionalEquipmentService {
@@ -25,5 +28,14 @@ public class AdditionalEquipmentService {
         AdditionalEquipment additionalEquipment = new AdditionalEquipment();
         AdditionalEquipmentDto additionalEquipmentDto = additionalEquipmentMapper.mapToDto(additionalEquipmentRepository.findById(1L).orElseThrow(()-> new NullPointerException()));
         conferenceRoomDto.setAdditionalEquipment(additionalEquipment);
+    }
+
+    public List<AdditionalEquipmentDto> findAllEquipment() {
+        List<AdditionalEquipment> additionalEquipments = additionalEquipmentRepository.findAll();
+        List<AdditionalEquipmentDto> additionalEquipmentDtos = new ArrayList<>();
+        for (AdditionalEquipment additionalEquipment : additionalEquipments) {
+            additionalEquipmentDtos.add(additionalEquipmentMapper.mapToDto(additionalEquipment));
+        }
+        return additionalEquipmentDtos;
     }
 }
