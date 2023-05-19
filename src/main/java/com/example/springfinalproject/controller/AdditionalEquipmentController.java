@@ -35,4 +35,11 @@ public class AdditionalEquipmentController {
         model.addAttribute("equipments", additionalEquipmentDtos);
         return "additional-equipment-list";
     }
+
+    @PostMapping("/chose-equipment")
+    public String chose() {
+        System.out.println("test");
+        return "add-additional-equipment.html";
+    }
+
 }

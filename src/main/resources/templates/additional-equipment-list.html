@@ -7,7 +7,10 @@
 <body>
 <h1>List of additional equipment:</h1>
 <ol>
+  <form>
   <li th:each="equipments : ${equipments}">
+    <input type="radio" name = "choose" th:value =" ${equipments.getId()}">
+    <br>
     <label>Projector Name:</label>
     <span th:text="${equipments.getProjectorName()}"></span> <br>
     <label>Amount:</label>
@@ -26,6 +29,13 @@
     <span th:text="${equipments.getPricePerDay()}"></span> <br>
     <hr>
   </li>
+      <button type="submit">Dodaj</button>
+  </form>
 </ol>
+<!--<form action="/chose-equipment" method="post">-->
+<!--  <input type="radio" name="choose" value="NULL">-->
+<!--  <input type="radio" name="choose" value="NULL">-->
+<!--  <button type="submit">Dodaj</button>-->
+<!--</form>-->
 </body>
 </html>
