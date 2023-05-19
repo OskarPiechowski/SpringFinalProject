@@ -1,6 +1,8 @@
 package com.example.springfinalproject.config;
 
 import com.example.springfinalproject.common.InterfaceUSB;
+import com.example.springfinalproject.controller.AdditionalEquipmentController;
+import com.example.springfinalproject.dto.AdditionalEquipmentDto;
 import com.example.springfinalproject.entity.AdditionalEquipment;
 import com.example.springfinalproject.entity.ConferenceRoom;
 import com.example.springfinalproject.entity.Organisation;
@@ -38,7 +40,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private RoomReservationRepository roomReservationRepository;
     private AdditionalEquipmentRepository additionalEquipmentRepository;
 
-
     @Transactional
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -54,6 +55,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             additionalEquipment2.setPricePerHour(BigDecimal.valueOf(50));
             additionalEquipment2.setPricePerDay(BigDecimal.valueOf(200));
             additionalEquipmentRepository.save(additionalEquipment2);
+
 
             ConferenceRoom roomEntity = new ConferenceRoom();
             roomEntity.setName("Room 1");

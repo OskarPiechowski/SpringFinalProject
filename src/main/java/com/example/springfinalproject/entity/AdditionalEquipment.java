@@ -45,6 +45,7 @@ public class AdditionalEquipment {
 
     //Dodałem ENUMa w pakiecie common, bo będzie wykorzystywany (lub może być) rónież w innych miejscach aplikacji,
     // które ustawiać będą wartość tego atrybutu/pola.
+    @Enumerated(value = EnumType.STRING)
     private InterfaceUSB interfaceUSB;
 
     @AssertTrue(message = "Internal number and external number are required when phone is true")
