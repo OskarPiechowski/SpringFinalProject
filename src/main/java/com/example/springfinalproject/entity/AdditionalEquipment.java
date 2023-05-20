@@ -23,7 +23,7 @@ public class AdditionalEquipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String projectorName;
     //    pola z @Nullable są opcjonalne
