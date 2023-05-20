@@ -12,14 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class InvoiceDto {
 
-
-    public InvoiceDto(String name, Long nip) {
-        this.name = name;
-        this.nip = nip;
-    }
-
     @Column(unique = true)
-    private Long id;
+    private long id;
     private String number;
     private String name;
     @Column(unique = true)
@@ -37,6 +31,12 @@ public class InvoiceDto {
     private Double value;
 
     private LocalDateTime date;
+
+    public InvoiceDto(String name, Long nip) {
+        this.name = name;
+        this.nip = nip;
+    }
+
 
     @Override
     public String toString() {

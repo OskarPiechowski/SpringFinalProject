@@ -18,6 +18,7 @@ public class InvoiceController {
 
     @GetMapping("/")
     public String getMainPage(){
+
         return "main-page";
     }
     @GetMapping("/invoice")
@@ -25,7 +26,8 @@ public class InvoiceController {
 return new ModelAndView("new-invoice");
     }
     @PostMapping("/invoice")
-    public void addInvoice(InvoiceDto invoiceRequest){
+    public String addInvoice(InvoiceDto invoiceRequest){
         invoiceService.addInvoice(invoiceRequest);
+        return "redirect:/";
     }
 }
