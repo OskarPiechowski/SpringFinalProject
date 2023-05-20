@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdditionalEquipmentDto {
-    private int id;
+    private long id;
 
     private String projectorName;
     @Nullable

@@ -23,7 +23,7 @@ public class AdditionalEquipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String projectorName;
     //    pola z @Nullable są opcjonalne
@@ -38,17 +38,17 @@ public class AdditionalEquipment {
     private boolean phone;
 
     @Max(value = 99, message = "Internal number must be a natural number less than 100")
-    private Integer internalNumber;
+    private Integer internalNumber = null;
 
     @Pattern(regexp = "\\+\\d{2} \\d{10}", message = "External number must be in the format +12 1234567890")
-    private String externalNumber;
+    private String externalNumber = null;
 
     //Dodałem ENUMa w pakiecie common, bo będzie wykorzystywany (lub może być) rónież w innych miejscach aplikacji,
     // które ustawiać będą wartość tego atrybutu/pola.
     @Enumerated(value = EnumType.STRING)
     private InterfaceUSB interfaceUSB;
 
-    @AssertTrue(message = "Internal number and external number are required when phone is true")
+//    @AssertTrue(message = "Internal number and external number are required when phone is true")
     private boolean isValidPhone() {
         if (phone) {
             return internalNumber != null && externalNumber != null;
