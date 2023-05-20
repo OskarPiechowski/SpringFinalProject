@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "invoices")
 public class Invoice {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="invoice_id")
@@ -34,7 +33,7 @@ public class Invoice {
     private String city;
     @Column(name="room_id")
     private Long room_id;
-    @Column(name="value")
+    @Column(name="invoice_value")
     private Double value;
     @Column(name="invoice_Date")
     private LocalDateTime date;
