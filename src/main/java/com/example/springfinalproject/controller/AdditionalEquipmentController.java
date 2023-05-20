@@ -36,8 +36,8 @@ public class AdditionalEquipmentController {
         return "additional-equipment-list";
     }
 
-    @PostMapping("/chose-equipment")
-    public String chose() {
+    @PostMapping("/choose-equipment")
+    public String choose() {
         System.out.println("test");
         return "add-additional-equipment.html";
     }
