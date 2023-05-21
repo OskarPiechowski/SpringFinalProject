@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your invoices:</title>
+</head>
+<body>
+<h1>List of invoices:</h1>
+<ol>
+    <li th:each="invoice : ${invoices}">
+        <span th:text="${invoice.id}"></span>
+        <span th:text="${invoice.name}"></span>
+        <span th:text="${invoice.number}"></span>
+        <span th:text="${invoice.address}"></span>
+        <span th:text="${invoice.postcode}"></span>
+        <span th:text="${invoice.city}"></span>
+        <span th:text="${invoice.nip}"></span>
+        <span th:text="${invoice.value}"></span>
+        <span th:text="${invoice.date}"></span>
+        <hr>
+    </li>
+</ol>
+</body>
+</html>
