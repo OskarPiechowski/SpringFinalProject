@@ -5,6 +5,7 @@ import com.example.springfinalproject.service.OrganisationService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,6 @@ public class AuthenticationController {
         modelAndView.addObject("authenticated", authenticated);
         return modelAndView;
     }
-
     @GetMapping("/register")
     public ModelAndView getRegisterPage() {
         OrganisationDto organisationDto = new OrganisationDto();
@@ -40,5 +40,10 @@ public class AuthenticationController {
         System.out.println("!!!!!" + organisationDto);
         organisationService.addOrganisation(organisationDto);
         return new ModelAndView("redirect:/");
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage(Model model) {
+        return "login";
     }
 }

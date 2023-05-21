@@ -25,13 +25,23 @@ public OrganisationDto mapToDto(Organisation organisation){
 return OrganisationDto.builder()
         .id(organisation.getId())
         .name(organisation.getName())
+        .email(organisation.getEmail())
+        .loginPassword(organisation.getLoginPassword())
+        .nip(organisation.getNip())
         .address(organisation.getAddress())
-        .postcode(organisation.getPostcode())
         .city(organisation.getCity())
+        .postcode(organisation.getPostcode())
         .build();
 }
 public Organisation mapToEntity(OrganisationDto organisationDto){
-return new Organisation(organisationDto.getName(), organisationDto.getNip(), organisationDto.getAddress(), organisationDto.getCity(), organisationDto.getPostcode());
-
+return new Organisation(
+        organisationDto.getId(),
+        organisationDto.getName(),
+        organisationDto.getEmail(),
+        organisationDto.getLoginPassword(),
+        organisationDto.getNip(),
+        organisationDto.getAddress(),
+        organisationDto.getCity(),
+        organisationDto.getPostcode());
 }
 }
