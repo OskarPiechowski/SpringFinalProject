@@ -36,7 +36,7 @@ public class InvoiceController {
     }
     @GetMapping("/invoice/new")
     public ModelAndView getInvoice(){
-        return new ModelAndView("invoices-form");
+        return new ModelAndView("invoice-form");
     }
 
 }

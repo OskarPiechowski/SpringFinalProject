@@ -21,20 +21,10 @@ public class InvoiceService {
         public void addInvoice(InvoiceDto request) {
                 Invoice invoice = invoiceMapper.mapToEntity(request);
                 invoiceRepository.save(invoice);
-
         }
 
         public List<Invoice> findAllInvoices() {
                 return invoiceRepository.findAll();
 
-/*        public List<InvoiceDto> findAllInvoices() {
-                List<Invoice> invoices = invoiceRepository.findAll();
-                List<InvoiceDto> invoiceDtos = new ArrayList<>();
-                for(Invoice invoice : invoices){
-                        invoiceDtos.add(invoiceMapper.mapToDto(invoice));
-                }
-                return invoiceDtos;
-
-        }*/
         }
 }
