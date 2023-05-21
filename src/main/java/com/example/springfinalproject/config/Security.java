@@ -5,11 +5,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -23,6 +25,27 @@ public class Security {
         this.organisationService = organisationService;
         this.passwordEncoder = passwordEncoder;
     }
+
+//    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
+//
+//    }
+
+    public SecurityFilterChain getFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(customizer -> customizer.disable());
+        http.headers(customizer -> customizer.disable());
+        return http
+                .userDetailsService(organisationService)
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/main-page").permitAll()/*tutaj wpiszemy nasze strony które mają być widoczne dla wszystkich*/
+                                .anyRequest().authenticated())
+                .formLogin(customizer -> customizer.loginPage("/login")
+                        .permitAll())
+                .logout(Customizer.withDefaults())
+                .build();
+    }
+
+
+
 //
 //    public Security(OrganisationService organisationService) {
 //        this.organisationService = organisationService;

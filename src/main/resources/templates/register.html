@@ -6,17 +6,17 @@
 </head>
 <body>
 <h1>Zarejestruj się:</h1>
-<form action="/create-user" method="post">
+<form action="/register" method="post">
 
     <label>Podaj nazwę swojej organizacji (login):</label>
-<!--    <input type="text" th:field="${...............}">-->
+    <input type="text" th:field="${organisationDto.getName}">
     <br>
     <label>Podaj hasło:</label>
-<!--    <input type="password" th:field="${.................}">-->
+    <input type="password" th:field="${organisationDto.getLoginPassword()}">
     <br>
-    <label>Powtórz hasło:</label>
-<!--    <input type="password" th:field="${...............}">-->
-    <br>
+<!--    <label>Powtórz hasło:</label>-->
+<!--&lt;!&ndash;    <input type="password" th:field="${...............}">&ndash;&gt;-->
+<!--    <br>-->
     <button type="submit">Zarejestruj się!</button>
 </form>
 </body>
