@@ -1,6 +1,7 @@
 package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.OrganisationDto;
+import com.example.springfinalproject.service.AuthenticationService;
 import com.example.springfinalproject.service.OrganisationService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -16,18 +17,27 @@ public class AuthenticationController {
 
     private OrganisationService organisationService;
 
-    public AuthenticationController(OrganisationService organisationService) {
+    private AuthenticationService authenticationService;
+
+    public AuthenticationController(OrganisationService organisationService, AuthenticationService authenticationService) {
         this.organisationService = organisationService;
+        this.authenticationService = authenticationService;
     }
 
     @GetMapping("/")
     public ModelAndView getHomePage() {
+        /* tutaj jest wyciągny obiekt
+         * trzeba sprawdzić czy w bazie danych isnieje obiekt o takim Name
+         * jeśli isnieje to można wyciągnąć go z bazy
+         * i jeszcze należy go zrzutowac na organizację
+         * zrobić oddzielny AuthenticationService na zalogowanego użytjkownika
+         * */
         Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         boolean authenticated = securityActualUser instanceof User;
         ModelAndView modelAndView = new ModelAndView("main-page.html");
         modelAndView.addObject("authenticated", authenticated);
         if (authenticated){
-
+            authenticationService.selectLogged(securityActualUser);
         }
         return modelAndView;
     }
