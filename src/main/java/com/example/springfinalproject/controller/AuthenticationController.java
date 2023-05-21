@@ -26,6 +26,9 @@ public class AuthenticationController {
         boolean authenticated = securityActualUser instanceof User;
         ModelAndView modelAndView = new ModelAndView("main-page.html");
         modelAndView.addObject("authenticated", authenticated);
+        if (authenticated){
+
+        }
         return modelAndView;
     }
     @GetMapping("/register")
