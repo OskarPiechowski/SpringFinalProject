@@ -19,10 +19,10 @@ import java.util.List;
 public class InvoiceController {
     private InvoiceService invoiceService;
 
-    @GetMapping("/")
+ /*   @GetMapping("/")
     public String getMainPage(){
         return "main-page";
-    }
+    }*/
     @PostMapping("/invoice/new")
     public String addInvoice(InvoiceDto invoiceRequest){
         invoiceService.addInvoice(invoiceRequest);
