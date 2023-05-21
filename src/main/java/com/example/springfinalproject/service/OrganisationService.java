@@ -6,6 +6,7 @@ import com.example.springfinalproject.mapper.OrganisationMapper;
 import com.example.springfinalproject.repository.OrganisationRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -61,15 +62,10 @@ public class OrganisationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-      /*  Organisation organisation = organisationRepository.findByNameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("Organisation not found with organisation name or email: " + usernameOrEmail));
-                Set<GrantedAuthority> authorities = organisation
-                        //.getRoles()
-                        .stream()
-                        .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
-
-        return new org.springframework.security.core.userdetails.User(organisation.getEmail(),
-        organisation.getLoginPassword(),
-        authorities);*/
-        return null;
+      Organisation organisation = organisationRepository.findByNameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("Organisation not found with organisation name or email: " + usernameOrEmail));
+        return User.withUsername(organisation.getName())
+                .password(organisation.getLoginPassword())
+                .roles("")
+                .build();
     }
 }

@@ -2,13 +2,20 @@ package com.example.springfinalproject.mapper;
 
 import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.entity.Organisation;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
 public class OrganisationMapper {
 
-public List<OrganisationDto> mapToDtos(List<Organisation> organisations){
+    private PasswordEncoder passwordEncoder;
+
+    public OrganisationMapper(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public List<OrganisationDto> mapToDtos(List<Organisation> organisations){
     return organisations.stream()
             .map(this::mapToDto)
             .toList();
@@ -25,13 +32,23 @@ public OrganisationDto mapToDto(Organisation organisation){
 return OrganisationDto.builder()
         .id(organisation.getId())
         .name(organisation.getName())
+        .email(organisation.getEmail())
+        .loginPassword(organisation.getLoginPassword())
+        .nip(organisation.getNip())
         .address(organisation.getAddress())
-        .postcode(organisation.getPostcode())
         .city(organisation.getCity())
+        .postcode(organisation.getPostcode())
         .build();
 }
 public Organisation mapToEntity(OrganisationDto organisationDto){
-return new Organisation(organisationDto.getName(), organisationDto.getNip(), organisationDto.getAddress(), organisationDto.getCity(), organisationDto.getPostcode());
-
+return new Organisation(
+        organisationDto.getId(),
+        organisationDto.getName(),
+        organisationDto.getEmail(),
+        passwordEncoder.encode(organisationDto.getLoginPassword()),
+        organisationDto.getNip(),
+        organisationDto.getAddress(),
+        organisationDto.getCity(),
+        organisationDto.getPostcode());
 }
 }

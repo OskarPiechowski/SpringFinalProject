@@ -16,8 +16,8 @@ public class InvoiceDto {
     private long id;
     private String number;
     private String name;
-    @Column(unique = true)
-    @Pattern(regexp = "^16\\d{10}$")
+//    @Column(unique = true)
+//    @Pattern(regexp = "^16\\d{10}$")
     private Long nip;
 
     private String address;

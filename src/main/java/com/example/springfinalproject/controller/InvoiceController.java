@@ -16,11 +16,13 @@ public class InvoiceController {
 @Autowired
     private InvoiceService invoiceService;
 
-    @GetMapping("/")
-    public String getMainPage(){
+//    @GetMapping("/")
+//    public String getMainPage(){
+//
+//        return "main-page";
+//    }
 
-        return "main-page";
-    }
+    // zakomentowane bo jest to w Authentication Controller
     @GetMapping("/invoice")
     public ModelAndView getInvoice(){
 return new ModelAndView("new-invoice");
