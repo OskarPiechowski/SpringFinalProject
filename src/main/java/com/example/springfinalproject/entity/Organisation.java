@@ -29,20 +29,20 @@ public class Organisation {
     private Long id;
     //zapewnienie rozmiaru od 2 do 20 znaków, oba włącznie oraz to, że atrybut/pole ma mieć unikalną wartość;
     // przez to nadaje się również na id, ale nic z tym nie robię; należy dodatkowo pamiętać, żeby w warstwie logiki aplikacji, również to sprawdzać
-    @Column(unique = true)
-    @Size(min = 2, max = 20)
+//    @Column(unique = true)
+//    @Size(min = 2, max = 20)
     private String name;
-    @Email
+//    @Email
     private String email;
     private String loginPassword;
     //Zmiana na String wg sugestii Daniela o zapisie 0 z przodu, gdyby było trzeba.
     // Jeżeli do celów przetwarzania w systemie informatycznym wymagane jest 12 cyfr, numer NIP powinien zaczynać się od liczby 16.
-    @Pattern(regexp = "^16\\d{10}$")
+//    @Pattern(regexp = "^16\\d{10}$")
     private String nip;
     private String address;
     private String city;
     // Zmiana na String zgodnie z sugestią Daniela. Długość 5 dowolnych cyfr
-    @Pattern(regexp = "\\d{5}")
+//    @Pattern(regexp = "\\d{5}")
     private String postcode;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -55,8 +55,8 @@ public class Organisation {
     private List<RoomReservation> reservationList = new ArrayList<>();
 
 //    @JsonBackReference
-    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
-    private List<Authorisation> authorisationList = new ArrayList<>();
+//    @OneToMany(mappedBy = "organisation", fetch = FetchType.EAGER)
+//    private List<Authorisation> authorisationList = new ArrayList<>();
 
 
     //wydaje mi się, że konstruktor z id nie powinien istnieć, bo id jest generowane, ale to moja uwaga tylko (TW); może Spring sobie z tym poradzi i tak

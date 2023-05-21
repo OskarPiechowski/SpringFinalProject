@@ -26,21 +26,21 @@ public class ConferenceRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //min 2 znaki, maks 20 znaków, nie może zawierać samych białych znaków -> potrzebny import import jakarta.validation.constraints.Size; i nowe dependency
-    @NotBlank
-    @Size(min = 2, max = 20)
+//    @NotBlank
+//    @Size(min = 2, max = 20)
     private String name;
     // liczba od 0 do 10 -> potrzebny import import jakarta.validation.constraints. ... (Max, Min);
-    @Min(0)
-    @Max(10)
+//    @Min(0)
+//    @Max(10)
     private int floor;
     private boolean availability;
     //wszystkie poniższe pola miejsc wymagane w projekcie
     private int sits;
     private int standingSits;
     //    pola z @Nullable są opcjonalne
-    @Nullable
+//    @Nullable
     private int layingSits;
-    @Nullable
+//    @Nullable
     private int hangingSits;
     /*
     idzie do wyposażenia dodatkowego
@@ -50,7 +50,7 @@ public class ConferenceRoom {
     @OneToOne
     @JoinColumn(name = "id_additional_equipment")
     public AdditionalEquipment additionalEquipment;
-    @Nullable
+//    @Nullable
     private String pictureFile;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;

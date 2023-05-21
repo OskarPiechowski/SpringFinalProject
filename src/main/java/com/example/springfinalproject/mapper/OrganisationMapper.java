@@ -2,13 +2,20 @@ package com.example.springfinalproject.mapper;
 
 import com.example.springfinalproject.dto.OrganisationDto;
 import com.example.springfinalproject.entity.Organisation;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
 public class OrganisationMapper {
 
-public List<OrganisationDto> mapToDtos(List<Organisation> organisations){
+    private PasswordEncoder passwordEncoder;
+
+    public OrganisationMapper(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public List<OrganisationDto> mapToDtos(List<Organisation> organisations){
     return organisations.stream()
             .map(this::mapToDto)
             .toList();
@@ -38,7 +45,7 @@ return new Organisation(
         organisationDto.getId(),
         organisationDto.getName(),
         organisationDto.getEmail(),
-        organisationDto.getLoginPassword(),
+        passwordEncoder.encode(organisationDto.getLoginPassword()),
         organisationDto.getNip(),
         organisationDto.getAddress(),
         organisationDto.getCity(),
