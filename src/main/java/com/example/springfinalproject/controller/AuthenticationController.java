@@ -31,7 +31,7 @@ public class AuthenticationController {
     @GetMapping("/register")
     public ModelAndView getRegisterPage() {
         OrganisationDto organisationDto = new OrganisationDto();
-        ModelAndView modelAndView = new ModelAndView("register");
+        ModelAndView modelAndView = new ModelAndView("register.html");
         modelAndView.addObject("organisationDto", organisationDto);
         return modelAndView;
     }

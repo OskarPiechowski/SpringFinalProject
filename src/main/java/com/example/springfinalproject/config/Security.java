@@ -29,14 +29,14 @@ public class Security {
 //    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
 //
 //    }
-
+    @Bean
     public SecurityFilterChain getFilterChain(HttpSecurity http) throws Exception {
         http.csrf(customizer -> customizer.disable());
         http.headers(customizer -> customizer.disable());
         return http
                 .userDetailsService(organisationService)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/main-page").permitAll()/*tutaj wpiszemy nasze strony które mają być widoczne dla wszystkich*/
+                        auth.requestMatchers("/", "/register", "/login").permitAll()/*tutaj wpiszemy nasze strony które mają być widoczne dla wszystkich*/
                                 .anyRequest().authenticated())
                 .formLogin(customizer -> customizer.loginPage("/login")
                         .permitAll())
