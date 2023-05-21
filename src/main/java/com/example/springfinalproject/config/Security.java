@@ -13,32 +13,39 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableMethodSecurity
+//@EnableMethodSecurity
 public class Security {
     private OrganisationService organisationService;
 
-    public Security(OrganisationService organisationService) {
+    private PasswordEncoder passwordEncoder;
+
+    public Security(OrganisationService organisationService, PasswordEncoder passwordEncoder) {
         this.organisationService = organisationService;
+        this.passwordEncoder = passwordEncoder;
     }
-    @Bean
-    public static PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration configuration) throws Exception{
-        return configuration.getAuthenticationManager();
-    }
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.csrf().disable()
-                .headers().disable() //for console
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                .requestMatchers("/console").permitAll()
-                        .requestMatchers("/api/authorisation/**").permitAll()
-                                .anyRequest().permitAll())
-                .formLogin();
-        return httpSecurity.build();
-    }
+//
+//    public Security(OrganisationService organisationService) {
+//        this.organisationService = organisationService;
+//    }
+//    @Bean
+//    public static PasswordEncoder passwordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
+//    @Bean
+//    public AuthenticationManager authenticationManager(
+//            AuthenticationConfiguration configuration) throws Exception{
+//        return configuration.getAuthenticationManager();
+//    }
+//    @Bean
+//    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+//        httpSecurity.csrf().disable()
+//                .headers().disable() //for console
+//                .authorizeHttpRequests((authorize) ->
+//                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+//                                .requestMatchers("/console").permitAll()
+//                        .requestMatchers("/api/authorisation/**").permitAll()
+//                                .anyRequest().permitAll())
+//                .formLogin();
+//        return httpSecurity.build();
+//    }
 }
