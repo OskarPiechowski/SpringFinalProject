@@ -23,6 +23,13 @@ public class AuthenticationController {
     @GetMapping("/")
     public ModelAndView getHomePage() {
         Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        /* tutaj jest wyciągny obiekt
+        * trzeba sprawdzić czy w bazie danych isnieje obiekt o takim Name
+        * jeśli isnieje to można wyciągnąć go z bazy
+        * i jeszcze należy go zrzutowac na organizację
+        * zrobić oddzielny AuthenticationService na zalogowanego użytjkownika
+        * */
+
         boolean authenticated = securityActualUser instanceof User;
         ModelAndView modelAndView = new ModelAndView("main-page.html");
         modelAndView.addObject("authenticated", authenticated);
