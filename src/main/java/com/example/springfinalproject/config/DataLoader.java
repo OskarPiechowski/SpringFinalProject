@@ -109,7 +109,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
             RoomReservation roomReservation = RoomReservation.builder()
                     .organisation(organisation1) // obiekt klasy Organisation
-                    .roomId(roomEntity) // obiekt klasy ConferenceRoom
+                    .conferenceRoom(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 1))
                     .startTime(LocalTime.of(10, 0))
                     .endDate(LocalDate.of(2023, 5, 1))
@@ -121,7 +121,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
             RoomReservation roomReservation1 = RoomReservation.builder()
                     .organisation(organisation) // obiekt klasy Organisation
-                    .roomId(roomEntity) // obiekt klasy ConferenceRoom
+                    .conferenceRoom(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 11))
                     .startTime(LocalTime.of(10, 0))
                     .endDate(LocalDate.of(2023, 5, 12))
