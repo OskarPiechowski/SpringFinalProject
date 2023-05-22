@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Controller
 public class InvoiceController {
     private InvoiceService invoiceService;
