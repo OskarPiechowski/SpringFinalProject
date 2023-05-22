@@ -14,25 +14,25 @@ import java.util.Random;
 @Controller
 public class SessionDemoController {
 
-    private AuthenticationService authenticationService;
-    @Resource
+    private OrganisationService organisationService;
+    @Resource(name = "mySession")
     private OrganisationSession organisationSession;
 
-    public SessionDemoController(AuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
+    public SessionDemoController(OrganisationService organisationService) {
+        this.organisationService = organisationService;
     }
 
     @GetMapping("/session-info")
-    public String getSessioInfo(HttpSession session, Model model){
+    public String getSessionInfo(HttpSession session, Model model){
         if (organisationSession.nameIsEmpty()){
             organisationSession.setName("test " + new Random().nextInt());
         }
         if (session.getAttribute("message") == null){
             session.setAttribute("message", "test " + new Random().nextInt());
         }
-        model.addAttribute("organisationMessage", session.getAttribute("message"));
+        model.addAttribute("sessionMessage", session.getAttribute("message"));
         model.addAttribute("organisationSession", organisationSession);
-        return "session";
+        return "session.html";
     }
 
 
