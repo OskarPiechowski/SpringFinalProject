@@ -11,7 +11,7 @@ public class MySessionConfig {
     @Bean
     @SessionScope
     public OrganisationSession mySession(){
-        System.out.println("create!");
+        System.out.println("new session start!");
         return new OrganisationSession();
     }
 }
