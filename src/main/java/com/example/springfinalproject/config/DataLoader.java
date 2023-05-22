@@ -72,6 +72,19 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             roomEntity.setAdditionalEquipment(additionalEquipment2);
             roomRepository.save(roomEntity);
 
+            ConferenceRoom roomEntity2 = new ConferenceRoom();
+            roomEntity2.setName("Room 2");
+            roomEntity2.setFloor(2);
+            roomEntity2.setAvailability(true    );
+            roomEntity2.setSits(500);
+            roomEntity2.setStandingSits(300);
+            roomEntity2.setLayingSits(20);
+            roomEntity2.setHangingSits(200);
+            roomEntity2.setPricePerHour(new BigDecimal(100));
+            roomEntity2.setPricePerDay(new BigDecimal(700));
+            roomEntity2.setAdditionalEquipment(additionalEquipment2);
+            roomRepository.save(roomEntity2);
+
 
             Organisation organisation = new Organisation();
             organisation.setName("Comarch");
