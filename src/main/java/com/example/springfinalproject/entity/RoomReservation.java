@@ -31,7 +31,7 @@ public class RoomReservation {
     @JoinColumn(name = "room_id")
 
     //tu do zmiany jest nazwa roomId, bo Ktoś zrobił kompozycję, ale te zmiany są rozległe, więc zostawiam na jakiś czas (TW)
-    private ConferenceRoom roomId;
+    private ConferenceRoom conferenceRoom;
 
     @Column(name = "start_date")
     private LocalDate startDate;

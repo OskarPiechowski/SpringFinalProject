@@ -6,13 +6,16 @@
 <body>
 <h1>Formularz Rezerwacji</h1>
 <form action="/reservations" method="POST">
+
+  <p th:text=${roomId}></p>
+
   <label for="organisation">Organisation:</label>
   <input type="text" id="organisation" name="organisation" required><br><br>
 
-  <label for="room">Room:</label>
-  <select id="room" name="roomId" required>
-    <option th:each="roomDto : ${roomDtos}" th:value="${roomDto.id}" th:text="${roomDto.name}"></option>
-  </select><br><br>
+  <input type="hidden" id="roomId" name="roomId" value="${roomId}">
+  <label for="roomId">Room:</label>
+  <label th:text="${roomDtos.get(roomId.intValue()-1).name}"></label>
+  <br><br>
 
   <label for="startDate">Start date:</label>
   <input type="date" id="startDate" name="startDate" required><br><br>

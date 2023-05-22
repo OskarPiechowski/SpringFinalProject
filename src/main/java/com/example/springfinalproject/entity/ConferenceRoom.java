@@ -54,6 +54,6 @@ public class ConferenceRoom {
     private String pictureFile;
     private BigDecimal pricePerHour;
     private BigDecimal pricePerDay;
-    @OneToMany(mappedBy = "roomId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "conferenceRoom", fetch = FetchType.EAGER)
     private List<RoomReservation> roomReservationList = new ArrayList<>();
 }

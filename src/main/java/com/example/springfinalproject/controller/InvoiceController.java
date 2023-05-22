@@ -14,7 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @AllArgsConstructor
-@NoArgsConstructor
+//Maciej mówi: usuń NoArgsController
+//@NoArgsConstructor
 @Controller
 public class InvoiceController {
     private InvoiceService invoiceService;
