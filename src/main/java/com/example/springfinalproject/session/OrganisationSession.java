@@ -17,11 +17,11 @@ public class OrganisationSession {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public boolean nameIsEmpty(){
         return name.isEmpty();
     }
-
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 }

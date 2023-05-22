@@ -28,9 +28,9 @@ public class SessionDemoController {
             organisationSession.setName("test " + new Random().nextInt());
         }
         if (session.getAttribute("message") == null){
-            session.setAttribute("meddage", "test " + new Random().nextInt());
+            session.setAttribute("message", "test " + new Random().nextInt());
         }
-        model.addAttribute("sessionMessage", session.getAttribute("message"));
+        model.addAttribute("organisationMessage", session.getAttribute("message"));
         model.addAttribute("organisationSession", organisationSession);
         return "session";
     }
