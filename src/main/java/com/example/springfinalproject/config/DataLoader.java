@@ -15,6 +15,7 @@ import com.example.springfinalproject.repository.RoomReservationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -39,6 +40,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private OrganisationRepository organizationRepository;
     private RoomReservationRepository roomReservationRepository;
     private AdditionalEquipmentRepository additionalEquipmentRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
@@ -74,6 +76,11 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             Organisation organisation = new Organisation();
             organisation.setName("Comarch");
             organisation.setCity("Kraków");
+            organisation.setPostcode("31864");
+            organisation.setNip("6770065406");
+            organisation.setAddress("al. Jana Pawła II 39a");
+            organisation.setEmail("comarch@comarch.pl");
+            organisation.setLoginPassword(passwordEncoder.encode("comarch"));
             organizationRepository.save(organisation);
 
 
