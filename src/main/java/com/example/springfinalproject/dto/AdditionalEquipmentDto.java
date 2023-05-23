@@ -10,6 +10,7 @@ import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
 
+@ToString
 @Getter
 @Setter
 @Builder
