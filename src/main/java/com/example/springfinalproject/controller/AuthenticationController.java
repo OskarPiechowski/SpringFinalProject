@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class AuthenticationController {
@@ -59,5 +60,13 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String getLoginPage(Model model) {
         return "login";
+    }
+
+    @GetMapping("/logout")
+    public RedirectView getLogoutPage() {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/"); // Adres URL strony głównej
+        return redirectView;
+//        return "main-page";
     }
 }

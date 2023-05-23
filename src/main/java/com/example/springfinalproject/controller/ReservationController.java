@@ -42,10 +42,11 @@ public class ReservationController {
 
 //    było przed wprowadzeniem przekazywania parametru
     @PostMapping("/reservations")
-    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation) {
+    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation, Model model) {
         Long roomId = 1L;
         Organisation organisation = authenticationService.selectLoggedOrganisation();
         System.out.println(organisation);
+        model.addAttribute("organisationname", organisation);
         ConferenceRoomDto conferenceRoom = conferenceRoomService.getConferenceRoomById(roomId);
         reservation.setOrganisation(organisation);
         reservationService.save(reservation);
@@ -69,9 +70,11 @@ public class ReservationController {
     @GetMapping("/reservations/new")
     public String getReservationForm(@RequestParam("roomId") Long roomId, Model model) {
         List<ConferenceRoomDto> roomDtos = conferenceRoomService.getAllRooms();
+//        Organisation organisation = authenticationService.selectLoggedOrganisation();
         model.addAttribute("roomDtos", roomDtos);
         model.addAttribute("reservation", new RoomReservation());
         model.addAttribute("roomId", roomId);
+//        model.addAttribute("organisationname", organisation);
         System.out.println("!!!!!!!!!!!!!!"+roomId+"!!!!!!!!!!!!!!");
         int x = roomId.intValue() - 1;
         System.out.println(roomDtos.get(x).getName());

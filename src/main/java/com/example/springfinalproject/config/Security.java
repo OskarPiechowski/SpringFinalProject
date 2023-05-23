@@ -40,7 +40,7 @@ public class Security {
                                 .anyRequest().authenticated())
                 .formLogin(customizer -> customizer.loginPage("/login")
                         .permitAll())
-                .logout(Customizer.withDefaults())
+                .logout(customizer -> customizer.logoutSuccessUrl("/"))
                 .build();
     }
 
