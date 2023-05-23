@@ -2,11 +2,14 @@ package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.ConferenceRoomDto;
 import com.example.springfinalproject.entity.ConferenceRoom;
+import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.entity.RoomReservation;
 import com.example.springfinalproject.mapper.ConferenceRoomMapper;
+import com.example.springfinalproject.service.AuthenticationService;
 import com.example.springfinalproject.service.ConferenceRoomService;
 import com.example.springfinalproject.service.ReservationService;
 import lombok.AllArgsConstructor;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,10 @@ public class ReservationController {
     private ConferenceRoomService conferenceRoomService;
     private ConferenceRoomMapper conferenceRoomMapper;
 
+    private AuthenticationController authenticationController;
+
+    private AuthenticationService authenticationService;
+
     @GetMapping("/reservations")
     public String getReservations(Model model) {
         List<RoomReservation> reservations = reservationService.findAll();
@@ -37,7 +44,10 @@ public class ReservationController {
     @PostMapping("/reservations")
     public String createReservation(@ModelAttribute("reservation") RoomReservation reservation) {
         Long roomId = 1L;
+        Organisation organisation = authenticationService.selectLoggedOrganisation();
+        System.out.println(organisation);
         ConferenceRoomDto conferenceRoom = conferenceRoomService.getConferenceRoomById(roomId);
+        reservation.setOrganisation(organisation);
         reservationService.save(reservation);
         return "redirect:/reservations";
     }
