@@ -7,8 +7,9 @@
 <body>
 <h1>List of additional equipment:</h1>
 <ol>
+  <a href="/logout">Logout</a>
   <form action="/choose-equipment" method="post">
-  <li th:each="equipments : ${equipments}">
+    <li th:each="equipments : ${equipments}">
     <input type="radio" name = "choose" th:value =" ${equipments.getId()}">
     <br>
     <label>Projector Name:</label>
@@ -31,6 +32,7 @@
   </li>
       <button type="submit">Dodaj</button>
   </form>
+  <a href="/" >Back to homepage</a>
 </ol>
 </body>
 </html>

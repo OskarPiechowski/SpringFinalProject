@@ -39,7 +39,7 @@ public class AdditionalEquipmentController {
     @PostMapping("/choose-equipment")
     public String choose() {
         System.out.println("test");
-        return "add-additional-equipment.html";
+        return "main-page";
     }
 
 }

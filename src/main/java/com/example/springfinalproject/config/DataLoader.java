@@ -106,6 +106,16 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             organisation1.setPostcode("93208");
             organizationRepository.save(organisation1);
 
+            Organisation organisation2 = new Organisation();
+            organisation2.setName("a");
+            organisation2.setCity("a");
+            organisation2.setPostcode("a");
+            organisation2.setNip("a");
+            organisation2.setAddress("a");
+            organisation2.setEmail("a");
+            organisation2.setLoginPassword(passwordEncoder.encode("a"));
+            organizationRepository.save(organisation2);
+
 
             RoomReservation roomReservation = RoomReservation.builder()
                     .organisation(organisation1) // obiekt klasy Organisation
