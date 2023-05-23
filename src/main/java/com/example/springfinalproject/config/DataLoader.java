@@ -15,6 +15,7 @@ import com.example.springfinalproject.repository.RoomReservationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -39,6 +40,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private OrganisationRepository organizationRepository;
     private RoomReservationRepository roomReservationRepository;
     private AdditionalEquipmentRepository additionalEquipmentRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
@@ -70,10 +72,28 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             roomEntity.setAdditionalEquipment(additionalEquipment2);
             roomRepository.save(roomEntity);
 
+            ConferenceRoom roomEntity2 = new ConferenceRoom();
+            roomEntity2.setName("Room 2");
+            roomEntity2.setFloor(2);
+            roomEntity2.setAvailability(true    );
+            roomEntity2.setSits(500);
+            roomEntity2.setStandingSits(300);
+            roomEntity2.setLayingSits(20);
+            roomEntity2.setHangingSits(200);
+            roomEntity2.setPricePerHour(new BigDecimal(100));
+            roomEntity2.setPricePerDay(new BigDecimal(700));
+            roomEntity2.setAdditionalEquipment(additionalEquipment2);
+            roomRepository.save(roomEntity2);
+
 
             Organisation organisation = new Organisation();
             organisation.setName("Comarch");
             organisation.setCity("Kraków");
+            organisation.setPostcode("31864");
+            organisation.setNip("6770065406");
+            organisation.setAddress("al. Jana Pawła II 39a");
+            organisation.setEmail("comarch@comarch.pl");
+            organisation.setLoginPassword(passwordEncoder.encode("comarch"));
             organizationRepository.save(organisation);
 
 
@@ -89,7 +109,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
             RoomReservation roomReservation = RoomReservation.builder()
                     .organisation(organisation1) // obiekt klasy Organisation
-                    .roomId(roomEntity) // obiekt klasy ConferenceRoom
+                    .conferenceRoom(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 1))
                     .startTime(LocalTime.of(10, 0))
                     .endDate(LocalDate.of(2023, 5, 1))
@@ -101,7 +121,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
             RoomReservation roomReservation1 = RoomReservation.builder()
                     .organisation(organisation) // obiekt klasy Organisation
-                    .roomId(roomEntity) // obiekt klasy ConferenceRoom
+                    .conferenceRoom(roomEntity) // obiekt klasy ConferenceRoom
                     .startDate(LocalDate.of(2023, 5, 11))
                     .startTime(LocalTime.of(10, 0))
                     .endDate(LocalDate.of(2023, 5, 12))
