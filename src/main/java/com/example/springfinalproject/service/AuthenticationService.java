@@ -19,7 +19,7 @@ public class AuthenticationService {
         Object securityContextHolder = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (securityContextHolder instanceof User) {
             User user = (User) securityContextHolder;
-            Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(() -> new NullPointerException("Nie ma takiego użytkownika"));
+            Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(() -> new NullPointerException("Provided Organisation does not exist"));
             return organisation;
         } else {
             return null;
