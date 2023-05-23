@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class AdditionalEquipmentDto {
     private long id;
 
