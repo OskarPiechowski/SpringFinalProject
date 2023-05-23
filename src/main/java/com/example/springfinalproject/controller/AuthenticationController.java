@@ -1,6 +1,7 @@
 package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.OrganisationDto;
+import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.service.AuthenticationService;
 import com.example.springfinalproject.service.OrganisationService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,13 +33,13 @@ public class AuthenticationController {
          * i jeszcze należy go zrzutowac na organizację
          * zrobić oddzielny AuthenticationService na zalogowanego użytjkownika
          * */
-        Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        boolean authenticated = securityActualUser instanceof User;
+//        Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        boolean authenticated = securityActualUser instanceof User;
+        Organisation organisation = authenticationService.selectLoggedOrganisation();
         ModelAndView modelAndView = new ModelAndView("main-page.html");
-        modelAndView.addObject("authenticated", authenticated);
-        if (authenticated){
-            authenticationService.selectLogged(securityActualUser);
-        }
+        System.out.println(organisation);
+//        modelAndView.addObject("authenticated", authenticated);
+
         return modelAndView;
     }
     @GetMapping("/register")

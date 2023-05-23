@@ -2,6 +2,7 @@ package com.example.springfinalproject.service;
 
 import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.repository.OrganisationRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,15 @@ public class AuthenticationService {
         this.organisationRepository = organisationRepository;
     }
 
-    public void selectLogged(Object object){
-        User user = (User) object;
-        Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(()->new NullPointerException("Nie ma takiego użytkownika"));
-        System.out.println(organisation);
+    public Organisation selectLoggedOrganisation() {
+        Object securityContextHolder = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (securityContextHolder instanceof User) {
+            User user = (User) securityContextHolder;
+            Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(() -> new NullPointerException("Nie ma takiego użytkownika"));
+            return organisation;
+        } else {
+            return null;
+        }
+
     }
-
-
 }
