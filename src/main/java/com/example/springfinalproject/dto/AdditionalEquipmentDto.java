@@ -10,11 +10,11 @@ import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
 
+@ToString
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class AdditionalEquipmentDto {
     private long id;
 

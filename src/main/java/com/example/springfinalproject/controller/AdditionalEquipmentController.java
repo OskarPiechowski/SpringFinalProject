@@ -1,6 +1,7 @@
 package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.AdditionalEquipmentDto;
+import com.example.springfinalproject.dto.ConferenceRoomDto;
 import com.example.springfinalproject.entity.RoomReservation;
 import com.example.springfinalproject.service.AdditionalEquipmentService;
 import jakarta.validation.Valid;
@@ -23,7 +24,7 @@ public class AdditionalEquipmentController {
     }
 
     @PostMapping("/add-equipment")
-    public String createAdditionalEquipment(@Valid AdditionalEquipmentDto additionalEquipmentDto, Model model) {
+    public String createAdditionalEquipment(AdditionalEquipmentDto additionalEquipmentDto, Model model) {
         System.out.println(additionalEquipmentDto);
         additionalEquipmentService.addAdditionalEquipment(additionalEquipmentDto);
         model.addAttribute("message", "Dosałeś wyposażenie dodatkowe");
@@ -37,9 +38,11 @@ public class AdditionalEquipmentController {
     }
 
     @PostMapping("/choose-equipment")
-    public String choose() {
+    public String choose(AdditionalEquipmentDto additionalEquipmentDto, Model model) {
+        model.addAttribute("equipment", additionalEquipmentDto);
+        System.out.println("test");
+        System.out.println(additionalEquipmentDto);
         System.out.println("test");
         return "main-page";
     }
-
 }
