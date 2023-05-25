@@ -19,13 +19,10 @@ import java.util.Optional;
 @Controller
 public class AuthenticationController {
 
-    private OrganisationService organisationService;
+    private final OrganisationService organisationService;
 
-    private AuthenticationService authenticationService;
-
-    public AuthenticationController(OrganisationService organisationService, AuthenticationService authenticationService) {
+    public AuthenticationController(OrganisationService organisationService) {
         this.organisationService = organisationService;
-        this.authenticationService = authenticationService;
     }
 
     @GetMapping("/")
@@ -38,20 +35,8 @@ public class AuthenticationController {
          * */
 //        Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        boolean authenticated = securityActualUser instanceof User;
-        boolean czyZalogowana = authenticationService.selectLoggedOrganisation().isPresent();
-        Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
-        Organisation organisation;
-        if (loggedOrganisation.isPresent()) {
-            organisation = loggedOrganisation.get();
-        } else {
-            throw new NoSuchElementException();
-        }
-        System.out.println(czyZalogowana);
-        System.out.println(organisation);
         ModelAndView modelAndView = new ModelAndView("main-page.html");
-//        System.out.println(loggedOrganisation);
-        modelAndView.addObject("authenticated", authenticated);
-
+//        modelAndView.addObject("authenticated", authenticated);
         return modelAndView;
     }
     @GetMapping("/register")

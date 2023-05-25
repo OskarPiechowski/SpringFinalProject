@@ -22,11 +22,13 @@ public class AuthenticationService {
         if (securityContextHolder instanceof User) {
             User user = (User) securityContextHolder;
             Optional <Organisation> loggedOrganisation = organisationRepository.findByName(user.getUsername());
-//            Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(() -> new NullPointerException("Provided Organisation does not exist"));
             return loggedOrganisation;
         } else {
             return Optional.empty();
         }
-
     }
+    /*tą metodę można fajnie skrócić robiąc onelinera i przerzucając user do warunku
+    póki co zostawiam w takiej formie jak jest, bo wydaje mi się dużo bardziej logiczna
+    zmieniłem typ zwracany metody z Organisation na Optional, zgodnie z sugesitą Daniela
+     */
 }
