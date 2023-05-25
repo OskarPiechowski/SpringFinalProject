@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Controller
 public class AuthenticationController {
 
@@ -35,10 +38,19 @@ public class AuthenticationController {
          * */
 //        Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        boolean authenticated = securityActualUser instanceof User;
-        Organisation organisation = authenticationService.selectLoggedOrganisation();
-        ModelAndView modelAndView = new ModelAndView("main-page.html");
+        boolean czyZalogowana = authenticationService.selectLoggedOrganisation().isPresent();
+        Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
+        Organisation organisation;
+        if (loggedOrganisation.isPresent()) {
+            organisation = loggedOrganisation.get();
+        } else {
+            throw new NoSuchElementException();
+        }
+        System.out.println(czyZalogowana);
         System.out.println(organisation);
-//        modelAndView.addObject("authenticated", authenticated);
+        ModelAndView modelAndView = new ModelAndView("main-page.html");
+//        System.out.println(loggedOrganisation);
+        modelAndView.addObject("authenticated", authenticated);
 
         return modelAndView;
     }
