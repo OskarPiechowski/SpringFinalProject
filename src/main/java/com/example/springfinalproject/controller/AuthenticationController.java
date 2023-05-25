@@ -39,7 +39,6 @@ public class AuthenticationController {
         ModelAndView modelAndView = new ModelAndView("main-page.html");
         System.out.println(organisation);
 //        modelAndView.addObject("authenticated", authenticated);
-
         return modelAndView;
     }
     @GetMapping("/register")
