@@ -20,7 +20,7 @@ import java.util.List;
 @Builder
 public class ConferenceRoomDto {
 
-        private Long id;
+        private long id;
         //min 2 znaki, maks 20 znaków, nie może zawierać samych białych znaków -> ustawiam to zgodnie z entity, choć nie wiadomo czy trzeba
 //        @NotBlank
 //        @Size(min = 2, max = 20)

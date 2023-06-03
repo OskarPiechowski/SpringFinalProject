@@ -31,8 +31,6 @@ public class AdditionalEquipmentMapper {
                 .phone(additionalEquipment.isPhone())
                 .internalNumber(additionalEquipment.getInternalNumber())
                 .externalNumber(additionalEquipment.getExternalNumber())
-                .interfaceUSB(additionalEquipment.getInterfaceUSB())
-                .pricePerHour(additionalEquipment.getPricePerHour())
                 .pricePerDay(additionalEquipment.getPricePerDay())
                 .build();
     }

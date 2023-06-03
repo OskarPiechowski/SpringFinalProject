@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface RoomReservationRepository extends JpaRepository<RoomReservation,Integer> {
+public interface RoomReservationRepository extends JpaRepository<RoomReservation,Long> {
     List<RoomReservation> findAll();
 
-    Optional<Object> findById(int id);
+    RoomReservation findById(long id);
 
     RoomReservation save(RoomReservation reservation);
 

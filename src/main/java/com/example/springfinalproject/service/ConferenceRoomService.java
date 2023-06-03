@@ -35,6 +35,7 @@ public class ConferenceRoomService {
 
     public ConferenceRoomDto getConferenceRoomById(Long id) {
         ConferenceRoom conferenceRoom = conferenceRoomRepository.findById(id).orElseThrow(()->new NullPointerException("Room does not exist"));
+
         return conferenceRoomMapper.mapToDto(conferenceRoom);
     }
 
@@ -61,5 +62,10 @@ public class ConferenceRoomService {
 
     public List<ConferenceRoomDto> getAllRoomDtos() {
         return getAllRooms();
+    }
+
+    public ConferenceRoom getConferenceRoomByIdasdsaidasd(long id) {
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.findById(id).orElseThrow(()->new NullPointerException("Room does not exist"));
+        return conferenceRoom;
     }
 }

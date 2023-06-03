@@ -19,7 +19,7 @@ public class RoomReservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
 //    @JsonManagedReference
     @ManyToOne
@@ -29,7 +29,6 @@ public class RoomReservation {
 
     @ManyToOne
     @JoinColumn(name = "room_id")
-
     //tu do zmiany jest nazwa roomId, bo Ktoś zrobił kompozycję, ale te zmiany są rozległe, więc zostawiam na jakiś czas (TW)
     private ConferenceRoom conferenceRoom;
 
