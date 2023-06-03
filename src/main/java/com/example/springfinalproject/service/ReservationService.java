@@ -20,10 +20,10 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ReservationService {
     private final RoomReservationRepository reservationRepository;
-    private final  AuthenticationService authenticationService;
+    private final AuthenticationService authenticationService;
     private final ConferenceRoomService conferenceRoomService;
 
-    private final RoomReservationMapper reservationMapper;
+//    private final RoomReservationMapper reservationMapper;
 
 
     public List<RoomReservation> findAll() {
@@ -35,8 +35,8 @@ public class ReservationService {
         return roomReservation;
     }
 
-    public void save(RoomReservationDto roomReservationDto) {
-        RoomReservation roomReservation = reservationMapper.mapToEntity(roomReservationDto);
+    public void save(RoomReservation roomReservation) {
+//        RoomReservation roomReservation = reservationMapper.mapToEntity(roomReservationDto);
         reservationRepository.save(roomReservation);
     }
 
@@ -57,6 +57,6 @@ public class ReservationService {
         ConferenceRoom conferenceRoom = conferenceRoomService.getConferenceRoomByIdasdsaidasd(roomId);
         reservation.setConferenceRoom(conferenceRoom);
         reservation.setOrganisation(organisation);
-//        save(reservation);
+        save(reservation);
     }
 }
