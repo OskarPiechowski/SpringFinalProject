@@ -17,4 +17,6 @@ public interface RoomReservationRepository extends JpaRepository<RoomReservation
     boolean existsById(int id);
 
     void deleteById(int id);
+
+    void getReservationById(long id);
 }

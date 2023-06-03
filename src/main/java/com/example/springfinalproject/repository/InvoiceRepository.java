@@ -12,4 +12,5 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Long> {
 
     Invoice save(Invoice invoice);
 
+//    boolean existsByReservation(RoomReservation reservation);
 }

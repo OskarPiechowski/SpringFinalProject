@@ -45,22 +45,8 @@ public class ReservationController {
     public String createReservation(@ModelAttribute("reservation") RoomReservation reservation,
                                     @RequestParam("roomId") long roomId) {
         reservationService.setReservation(roomId, reservation);
-        return "redirect:/reservations";
+        return "redirect:/api/reservations";
     }
-
-
-//    To niby powinno działać, ale leci 400
-//    @PostMapping("/reservations")
-//    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation,
-//                                    @RequestParam("roomId") Long roomId) {
-//        ConferenceRoomDto conferenceRoomDto = conferenceRoomService.getConferenceRoomById(roomId);
-//        ConferenceRoom conferenceRoom = conferenceRoomMapper.mapToEntity(conferenceRoomDto);
-//        reservation.setRoomId(conferenceRoom);
-//        reservationService.save(reservation);
-//        return "redirect:/reservations";
-//    }
-
-
 
     @GetMapping("/reservations/new")
     public String getReservationForm(@RequestParam("roomId") Long roomId, Model model) {
@@ -71,15 +57,14 @@ public class ReservationController {
         model.addAttribute("reservation", new RoomReservation());
         model.addAttribute("roomId", roomId);
         model.addAttribute("organisationname", organisation);
-        System.out.println("!!!!!!!!!!!!!!"+roomId+"!!!!!!!!!!!!!!");
+        System.out.println("!!!!!!!!!!!!!!" + roomId + "!!!!!!!!!!!!!!");
         int x = roomId.intValue() - 1;
         System.out.println(roomDtos.get(x).getName());
         return "reservation-form";
     }
 
-        @GetMapping("/api/reservations")
-        @ResponseBody
-        public List<RoomReservation> getReservationsApi () {
-            return reservationService.findAll();
-        }
+    @GetMapping("/api")
+    public String redirectToApi() {
+        return "redirect:/api/reservations";
     }
+}
