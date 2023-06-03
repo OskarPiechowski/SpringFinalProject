@@ -13,13 +13,7 @@ import java.util.List;
 @Component
 public class RoomReservationMapper {
 
-    ReservationService reservationService;
-    ConferenceRoomService conferenceRoomService;
 
-
-    public RoomReservationMapper(ReservationService reservationService) {
-        this.reservationService = reservationService;
-    }
 
     public List<RoomReservationDto> mapToDtos(List<RoomReservation> roomReservations){
         return roomReservations.stream()
@@ -45,6 +39,9 @@ public class RoomReservationMapper {
         RoomReservation roomReservation = new RoomReservation();
         roomReservation.setId(roomReservationDto.getId());
         roomReservation.setStartDate(roomReservationDto.getStartDate());
+        roomReservation.setStartTime(roomReservationDto.getStartTime());
+        roomReservation.setEndDate(roomReservationDto.getEndDate());
+        roomReservation.setStartTime(roomReservationDto.getEndTime());
         return roomReservation;
     }
 }
