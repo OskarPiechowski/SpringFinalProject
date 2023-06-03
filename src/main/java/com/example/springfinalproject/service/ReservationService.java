@@ -20,8 +20,9 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public Optional<Object> findById(int id) {
-        return reservationRepository.findById(id);
+    public RoomReservation getById(long id) {
+        RoomReservation roomReservation = reservationRepository.findById(id);
+        return roomReservation;
     }
 
     public RoomReservation save(RoomReservation reservation) {

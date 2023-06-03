@@ -24,7 +24,7 @@ import java.util.List;
 public class ConferenceRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     //min 2 znaki, maks 20 znaków, nie może zawierać samych białych znaków -> potrzebny import import jakarta.validation.constraints.Size; i nowe dependency
 //    @NotBlank
 //    @Size(min = 2, max = 20)
