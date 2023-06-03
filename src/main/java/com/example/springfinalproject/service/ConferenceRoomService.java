@@ -25,11 +25,12 @@ public class ConferenceRoomService {
     }
 
     public List<ConferenceRoomDto> getConferenceRooms(){
-        List<ConferenceRoomDto> conferenceRoomDtos = new ArrayList<>();
+        List<ConferenceRoomDto> conferenceRoomDtos;
         List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAll();
-        for (ConferenceRoom conferenceRoom : conferenceRooms){
-            conferenceRoomDtos.add(conferenceRoomMapper.mapToDto(conferenceRoom));
-        }
+        conferenceRoomDtos = conferenceRoomMapper.mapToDtos(conferenceRooms);
+//        for (ConferenceRoom conferenceRoom : conferenceRooms){
+//            conferenceRoomDtos.add(conferenceRoomMapper.mapToDto(conferenceRoom));
+//        }
         return conferenceRoomDtos;
     }
 

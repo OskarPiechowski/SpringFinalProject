@@ -41,19 +41,10 @@ public class ReservationController {
         return "reservations-list";
     }
 
-//    było przed wprowadzeniem przekazywania parametru
     @PostMapping("/reservations")
-    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation, @RequestParam("roomId") long roomId, Model model) {
-//        long roomId = reservation.getId();
-        System.out.println(roomId);
-        Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
-        Organisation organisation = loggedOrganisation.get();
-        System.out.println(organisation);
-        model.addAttribute("organisationname", organisation);
-        ConferenceRoom conferenceRoom = conferenceRoomService.getConferenceRoomByIdasdsaidasd(roomId);
-        reservation.setConferenceRoom(conferenceRoom);
-        reservation.setOrganisation(organisation);
-        reservationService.save(reservation);
+    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation,
+                                    @RequestParam("roomId") long roomId) {
+        reservationService.setReservation(roomId, reservation);
         return "redirect:/reservations";
     }
 
