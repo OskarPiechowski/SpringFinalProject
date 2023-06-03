@@ -49,7 +49,7 @@ public class ReservationService {
     public void createReservation(RoomReservation reservation) {
     }
 
-    public void setReservation(long roomId, RoomReservation reservation) {
+    public void setReservation(long roomId, RoomReservationDto roomReservationDto) {
         Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
         Organisation organisation = loggedOrganisation.get();
         RoomReservation roomReservation = roomReservationMapper.mapToEntity(roomReservationDto);
