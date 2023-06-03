@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -45,7 +46,8 @@ public class ReservationController {
     public String createReservation(@ModelAttribute("reservation") RoomReservation reservation, @RequestParam("roomId") long roomId, Model model) {
 //        long roomId = reservation.getId();
         System.out.println(roomId);
-        Organisation organisation = authenticationService.selectLoggedOrganisation();
+        Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
+        Organisation organisation = loggedOrganisation.get();
         System.out.println(organisation);
         model.addAttribute("organisationname", organisation);
         ConferenceRoom conferenceRoom = conferenceRoomService.getConferenceRoomByIdasdsaidasd(roomId);
@@ -72,7 +74,8 @@ public class ReservationController {
     @GetMapping("/reservations/new")
     public String getReservationForm(@RequestParam("roomId") Long roomId, Model model) {
         List<ConferenceRoomDto> roomDtos = conferenceRoomService.getAllRooms();
-        Organisation organisation = authenticationService.selectLoggedOrganisation();
+        Optional<Organisation> loggedOrganisation = authenticationService.selectLoggedOrganisation();
+        Organisation organisation = loggedOrganisation.get();
         model.addAttribute("roomDtos", roomDtos);
         model.addAttribute("reservation", new RoomReservation());
         model.addAttribute("roomId", roomId);
