@@ -6,6 +6,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthenticationService {
 
@@ -15,15 +17,18 @@ public class AuthenticationService {
         this.organisationRepository = organisationRepository;
     }
 
-    public Organisation selectLoggedOrganisation() {
+    public Optional<Organisation> selectLoggedOrganisation() {
         Object securityContextHolder = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (securityContextHolder instanceof User) {
             User user = (User) securityContextHolder;
-            Organisation organisation = organisationRepository.findByName(user.getUsername()).orElseThrow(() -> new NullPointerException("Provided Organisation does not exist"));
-            return organisation;
+            Optional <Organisation> loggedOrganisation = organisationRepository.findByName(user.getUsername());
+            return loggedOrganisation;
         } else {
-            return null;
+            return Optional.empty();
         }
-
     }
+    /*tą metodę można fajnie skrócić robiąc onelinera i przerzucając user do warunku
+    póki co zostawiam w takiej formie jak jest, bo wydaje mi się dużo bardziej logiczna
+    zmieniłem typ zwracany metody z Organisation na Optional, zgodnie z sugesitą Daniela
+     */
 }
