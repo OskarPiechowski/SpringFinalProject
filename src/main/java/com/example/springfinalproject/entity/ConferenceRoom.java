@@ -47,7 +47,7 @@ public class ConferenceRoom {
         private int projector;
         // TODO zmienić nazwę pola
     */
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_additional_equipment")
     public AdditionalEquipment additionalEquipment;
 //    @Nullable

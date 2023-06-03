@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Controller
 public class AuthenticationController {
 
-    private OrganisationService organisationService;
+    private final OrganisationService organisationService;
 
-    private AuthenticationService authenticationService;
-
-    public AuthenticationController(OrganisationService organisationService, AuthenticationService authenticationService) {
+    public AuthenticationController(OrganisationService organisationService) {
         this.organisationService = organisationService;
-        this.authenticationService = authenticationService;
     }
 
     @GetMapping("/")
@@ -36,11 +36,8 @@ public class AuthenticationController {
          * */
 //        Object securityActualUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        boolean authenticated = securityActualUser instanceof User;
-        Organisation organisation = authenticationService.selectLoggedOrganisation();
         ModelAndView modelAndView = new ModelAndView("main-page.html");
-        System.out.println(organisation);
 //        modelAndView.addObject("authenticated", authenticated);
-
         return modelAndView;
     }
     @GetMapping("/register")

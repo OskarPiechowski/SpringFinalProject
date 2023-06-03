@@ -40,7 +40,14 @@ public class Security {
                                 .anyRequest().authenticated())
                 .formLogin(customizer -> customizer.loginPage("/login")
                         .permitAll())
+//                .logout(Customizer.withDefaults())
                 .logout(customizer -> customizer.logoutSuccessUrl("/"))
+                /*
+                po odkomentowaniu linijki 44 a zakomentowaniu 45
+                po naciśnięciu przycisku logout będzie nas przekierowywało
+                na stronę główną i automatycznie wyciągnięta aktualnie zalogowana
+                organizacja zostanie spowrotem przestawiona na null
+                 */
                 .build();
     }
 
