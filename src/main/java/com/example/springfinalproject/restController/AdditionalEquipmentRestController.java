@@ -1,4 +1,4 @@
-package com.example.springfinalproject.controller;
+package com.example.springfinalproject.restController;
 
 import com.example.springfinalproject.dto.AdditionalEquipmentDto;
 import com.example.springfinalproject.service.AdditionalEquipmentService;
