@@ -1,6 +1,7 @@
 package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.ConferenceRoomDto;
+import com.example.springfinalproject.dto.RoomReservationDto;
 import com.example.springfinalproject.entity.ConferenceRoom;
 import com.example.springfinalproject.entity.Organisation;
 import com.example.springfinalproject.entity.RoomReservation;
@@ -47,6 +48,13 @@ public class ReservationController {
         reservationService.setReservation(roomId, reservation);
         return "redirect:/api/reservations";
     }
+
+//    @PostMapping("/reservations")
+//    public String createReservation(@ModelAttribute("reservation") RoomReservationDto roomReservationDto,
+//                                    @RequestParam("roomId") long roomId) {
+//        reservationService.setReservation(roomId, roomReservationDto);
+//        return "redirect:/reservations";
+//    }
 
     @GetMapping("/reservations/new")
     public String getReservationForm(@RequestParam("roomId") Long roomId, Model model) {

@@ -8,11 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RoomReservationRepository extends JpaRepository<RoomReservation,Long> {
-    List<RoomReservation> findAll();
 
     RoomReservation findById(long id);
-
-    RoomReservation save(RoomReservation reservation);
 
     boolean existsById(int id);
 
