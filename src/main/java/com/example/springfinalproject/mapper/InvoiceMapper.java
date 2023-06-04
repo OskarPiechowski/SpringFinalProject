@@ -33,6 +33,7 @@ public class InvoiceMapper {
                 .value(invoice.getValue())
                 .room_id(invoice.getRoom_id())
                 .postcode(invoice.getPostcode())
+                .reservationId(invoice.getReservationId())
                 .build();
 
     }
@@ -47,6 +48,7 @@ public class InvoiceMapper {
                 ,invoiceDto.getPostcode()
                 ,invoiceDto.getRoom_id()
                 ,invoiceDto.getValue()
-                ,invoiceDto.getDate());
+                ,invoiceDto.getDate()
+                ,invoiceDto.getReservationId());
     }
 }

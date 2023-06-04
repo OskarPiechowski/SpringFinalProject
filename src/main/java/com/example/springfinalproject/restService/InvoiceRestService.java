@@ -11,6 +11,8 @@ import com.example.springfinalproject.repository.InvoiceRepository;
 import com.example.springfinalproject.repository.RoomReservationRepository;
 import com.example.springfinalproject.service.InvoiceService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.math.BigDecimal;
 import java.time.*;
@@ -45,12 +47,13 @@ public class InvoiceRestService {
         Optional<RoomReservation> reservationOptional = roomReservationRepository.findById(reservationId);
         if (reservationOptional.isPresent()) {
             RoomReservation reservation = reservationOptional.get();
+            // Sprawdź, czy dla tej rezerwacji faktura już została wystawiona i rzuć wyjątkiem, ale lepiej by było
+            // wyświetlić stronkę z tą fakturą, ale to robi controler,
+            // a nie service i jak to zrobić?
+            if (invoiceRepository.existsByReservationId(reservationId)) {
+                throw new InvoiceAlreadyExistsException("Invoice already exists for reservation ID: " + reservationId);
+            }
             ConferenceRoom room = reservation.getConferenceRoom();
-
-            // Sprawdź, czy dla tej rezerwacji faktura już została wystawiona
-//            if (existsByReservation(reservation)) {
-//                throw new InvoiceAlreadyExistsException("Invoice already exists for reservation with ID: " + reservationId);
-//            }
 
 
             // Tworzenie faktury
@@ -64,6 +67,7 @@ public class InvoiceRestService {
             invoice.setRoom_id(room.getId());
             invoice.setValue(calculateInvoiceValue(reservation));
             invoice.setDate(LocalDateTime.now());
+            invoice.setReservationId(reservationId);
 
             // Zapis faktury
             Invoice savedInvoice = invoiceRepository.save(invoice);
@@ -105,9 +109,7 @@ public class InvoiceRestService {
         return invoiceRepository.findAll();
     }
 
-//    public boolean existsByReservation(RoomReservation reservation) {
-//        return invoiceRepository.existsByReservation(reservation);
-//    }
+
 
 }
 
