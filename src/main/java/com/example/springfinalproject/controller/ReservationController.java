@@ -42,19 +42,19 @@ public class ReservationController {
         return "reservations-list";
     }
 
-    @PostMapping("/reservations")
-    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation,
-                                    @RequestParam("roomId") long roomId) {
-        reservationService.setReservation(roomId, reservation);
-        return "redirect:/api/reservations";
-    }
-
 //    @PostMapping("/reservations")
-//    public String createReservation(@ModelAttribute("reservation") RoomReservationDto roomReservationDto,
+//    public String createReservation(@ModelAttribute("reservation") RoomReservation reservation,
 //                                    @RequestParam("roomId") long roomId) {
-//        reservationService.setReservation(roomId, roomReservationDto);
-//        return "redirect:/reservations";
+//        reservationService.setReservation(roomId, reservation);
+//        return "redirect:/api/reservations";
 //    }
+
+    @PostMapping("/reservations")
+    public String createReservation(@ModelAttribute("reservation") RoomReservationDto roomReservationDto,
+                                    @RequestParam("roomId") long roomId) {
+        reservationService.setReservation(roomId, roomReservationDto);
+        return "redirect:/reservations";
+    }
 
     @GetMapping("/reservations/new")
     public String getReservationForm(@RequestParam("roomId") Long roomId, Model model) {
