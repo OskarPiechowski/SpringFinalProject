@@ -11,8 +11,6 @@ import com.example.springfinalproject.repository.InvoiceRepository;
 import com.example.springfinalproject.repository.RoomReservationRepository;
 import com.example.springfinalproject.service.InvoiceService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.math.BigDecimal;
 import java.time.*;
@@ -105,9 +103,9 @@ public class InvoiceRestService {
         }
     }
 
-    public List<Invoice> findAll() {
-        System.out.println("tutaj jestem323323");
-        return invoiceRepository.findAll();
+    public List<InvoiceDto> getAllInvoices() {
+        List<InvoiceDto> invoiceDtos = invoiceMapper.mapToDtos(invoiceRepository.findAll());
+        return invoiceDtos;
     }
 
 

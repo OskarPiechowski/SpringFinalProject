@@ -37,9 +37,8 @@ public class InvoiceController {
     @GetMapping("/invoices")
     public String getAllInvoice(Model model) {
 //        List<Invoice> invoice = invoiceService.findAllInvoices();
-        List<Invoice> invoices = restApiClient.sendListProductHttpRequest();
-        System.out.println(invoices);
-        model.addAttribute("invoices", invoices);
+        List<InvoiceDto> invoicesDto = restApiClient.sendListProductHttpRequest();
+        model.addAttribute("invoices", invoicesDto);
         return "invoices-list";
     }
 
