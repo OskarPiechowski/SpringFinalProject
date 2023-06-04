@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Podaj numer rezerwacji, dla której chcesz wystawić fakturę:
+<form id="invoiceForm" action="/api/invoices/" method="post">
+    <input type="number" id="reservationId" name="reservationId">
+    <button type="submit">Wystaw fakturę</button>
+</form>
+
+<script>
+    document.getElementById("invoiceForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Zapobiega domyślnej akcji przesyłania formularza
+
+        var reservationId = document.getElementById("reservationId").value;
+        var formAction = "/api/invoices/" + reservationId;
+        document.getElementById("invoiceForm").action = formAction;
+
+        // Kontynuuj przesyłanie formularza
+        this.submit();
+    });
+</script>
+
+</body>
+</html>
+
+
+
+<!--================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--Podaj numer rezerwacji, dla której chcesz wystawić fakturę:-->
+<!--<form action="/api/invoices/{reservationId}" method="post">-->
+<!--    <input type="number" name="reservationId">-->
+<!--    <button type="submit">Wystaw fakturę</button>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->

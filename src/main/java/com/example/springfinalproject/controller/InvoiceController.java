@@ -20,24 +20,30 @@ import java.util.List;
 public class InvoiceController {
     private InvoiceService invoiceService;
 
- /*   @GetMapping("/")
-    public String getMainPage(){
-        return "main-page";
-    }*/
+    /*   @GetMapping("/")
+       public String getMainPage(){
+           return "main-page";
+       }*/
     @PostMapping("/invoice/new")
-    public String addInvoice(InvoiceDto invoiceRequest){
+    public String addInvoice(InvoiceDto invoiceRequest) {
         invoiceService.addInvoice(invoiceRequest);
         return "redirect:/";
     }
+
     @GetMapping("/invoices")
-    public String getAllInvoice(Model model){
-        List<Invoice> invoice= invoiceService.findAllInvoices();
+    public String getAllInvoice(Model model) {
+        List<Invoice> invoice = invoiceService.findAllInvoices();
         model.addAttribute("invoices", invoice);
         return "invoices-list";
     }
+
     @GetMapping("/invoice/new")
-    public ModelAndView getInvoice(){
+    public ModelAndView getInvoice() {
         return new ModelAndView("invoice-form");
     }
 
+    @GetMapping("/request-invoice")
+    public String showInvoiceRequestForm() {
+        return "request-invoice"; // Zwróć nazwę widoku HTML
+    }
 }
