@@ -1,6 +1,7 @@
 package com.example.springfinalproject.frontend;
 
 
+import com.example.springfinalproject.dto.InvoiceDto;
 import com.example.springfinalproject.entity.Invoice;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,9 @@ public class RestApiClient {
 //        return ResponseEntity.ok(invoices);
 //    }
 
-    public List<Invoice> sendListProductHttpRequest() {
+    public List<InvoiceDto> sendListProductHttpRequest() {
         RestTemplate restTemplate = new RestTemplate();
-        Invoice[] response = restTemplate.getForObject("http://localhost:8080/api/invoices", Invoice[].class);
-        return Arrays.asList(response);
+        InvoiceDto[] responseDto = restTemplate.getForObject("http://localhost:8080/api/invoices", InvoiceDto[].class);
+        return Arrays.asList(responseDto);
     }
 }

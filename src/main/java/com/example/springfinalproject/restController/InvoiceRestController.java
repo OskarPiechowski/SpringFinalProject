@@ -19,8 +19,8 @@ public class InvoiceRestController {
     }
 
     @GetMapping
-    public List<Invoice> getInvoiceApi(){
-        return invoiceRestService.findAll();
+    public List<InvoiceDto> getInvoiceApi(){
+        return invoiceRestService.getAllInvoices();
     }
 
     @GetMapping("/a")
