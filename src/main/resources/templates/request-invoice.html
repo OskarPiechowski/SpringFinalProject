@@ -6,23 +6,24 @@
 </head>
 <body>
 Podaj numer rezerwacji, dla której chcesz wystawić fakturę:
-<form id="invoiceForm" action="/api/invoices/" method="post">
+<h3 th:text="${message}"></h3>
+<form id="invoiceForm" action="/request-invoice" method="post">
     <input type="number" id="reservationId" name="reservationId">
     <button type="submit">Wystaw fakturę</button>
 </form>
 
-<script>
-    document.getElementById("invoiceForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Zapobiega domyślnej akcji przesyłania formularza
+<!--<script>-->
+<!--    document.getElementById("invoiceForm").addEventListener("submit", function(event) {-->
+<!--        event.preventDefault(); // Zapobiega domyślnej akcji przesyłania formularza-->
 
-        var reservationId = document.getElementById("reservationId").value;
-        var formAction = "/api/invoices/" + reservationId;
-        document.getElementById("invoiceForm").action = formAction;
+<!--        var reservationId = document.getElementById("reservationId").value;-->
+<!--        var formAction = "/api/invoices/" + reservationId;-->
+<!--        document.getElementById("invoiceForm").action = formAction;-->
 
-        // Kontynuuj przesyłanie formularza
-        this.submit();
-    });
-</script>
+<!--        // Kontynuuj przesyłanie formularza-->
+<!--        this.submit();-->
+<!--    });-->
+<!--</script>-->
 
 </body>
 </html>
