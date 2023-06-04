@@ -106,6 +106,7 @@ public class InvoiceRestService {
     }
 
     public List<Invoice> findAll() {
+        System.out.println("tutaj jestem323323");
         return invoiceRepository.findAll();
     }
 

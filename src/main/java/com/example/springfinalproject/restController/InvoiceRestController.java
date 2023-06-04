@@ -23,6 +23,12 @@ public class InvoiceRestController {
         return invoiceRestService.findAll();
     }
 
+    @GetMapping("/a")
+    public Invoice getInvoice(){
+        Invoice invoice = new Invoice();
+        return invoice;
+    }
+
     @PostMapping("/{reservationId}")
     public ResponseEntity<InvoiceDto> createInvoice(@PathVariable("reservationId") Long reservationId) {
         InvoiceDto invoiceDto = invoiceRestService.createInvoice(reservationId);

@@ -36,8 +36,9 @@ public class Security {
         return http
                 .userDetailsService(organisationService)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/", "/register", "/login").permitAll()/*tutaj wpiszemy nasze strony które mają być widoczne dla wszystkich*/
-                                .anyRequest().authenticated())
+//                        auth.requestMatchers("/", "/register", "/login", "/invoices").permitAll()/*tutaj wpiszemy nasze strony które mają być widoczne dla wszystkich*/
+//                                .anyRequest().authenticated())
+                        auth.anyRequest().permitAll())
                 .formLogin(customizer -> customizer.loginPage("/login")
                         .permitAll())
 //                .logout(Customizer.withDefaults())
