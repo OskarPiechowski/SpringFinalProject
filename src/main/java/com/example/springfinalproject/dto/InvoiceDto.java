@@ -32,6 +32,8 @@ public class InvoiceDto {
 
     private LocalDateTime date;
 
+    private Long reservationId;
+
     public InvoiceDto(String name, Long nip) {
         this.name = name;
         this.nip = nip;

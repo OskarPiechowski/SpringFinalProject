@@ -50,17 +50,4 @@ public class RoomReservation {
     @Column(name = "is_reservation_cancelled")
     private boolean isReservationCancelled;
 
-
-//    public RoomReservation(Organisation organisation, ConferenceRoom roomId, List<AdditionalEquipmentReservation> additionalEquipmentReservationList,
-//                           Date startDate, Time startTime, Date endDate, Time endTime, BigDecimal roomReservationDiscount, boolean isReservationCancelled) {
-//        this.organisation = organisation;
-//        this.roomId = roomId;
-//        this.additionalEquipmentReservationList = additionalEquipmentReservationList;
-//        this.startDate = startDate;
-//        this.startTime = startTime;
-//        this.endDate = endDate;
-//        this.endTime = endTime;
-//        this.roomReservationDiscount = roomReservationDiscount;
-//        this.isReservationCancelled = isReservationCancelled;
-//    }
 }

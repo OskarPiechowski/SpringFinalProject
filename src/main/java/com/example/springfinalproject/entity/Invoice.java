@@ -37,6 +37,8 @@ public class Invoice {
     private Double value;
     @Column(name="invoice_Date")
     private LocalDateTime date;
+    @Column(name="reservation_id")
+    private Long reservationId;
 
 
     public Invoice(String name, Long nip) {
