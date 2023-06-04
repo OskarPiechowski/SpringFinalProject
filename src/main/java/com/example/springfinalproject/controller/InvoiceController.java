@@ -2,6 +2,7 @@ package com.example.springfinalproject.controller;
 
 import com.example.springfinalproject.dto.InvoiceDto;
 import com.example.springfinalproject.entity.Invoice;
+import com.example.springfinalproject.frontend.RestApiClient;
 import com.example.springfinalproject.service.InvoiceService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 @Controller
 public class InvoiceController {
     private InvoiceService invoiceService;
+    private RestApiClient restApiClient;
 
     /*   @GetMapping("/")
        public String getMainPage(){
@@ -33,6 +35,7 @@ public class InvoiceController {
     @GetMapping("/invoices")
     public String getAllInvoice(Model model) {
         List<Invoice> invoice = invoiceService.findAllInvoices();
+        restApiClient.sendListProductHttpRequest();
         model.addAttribute("invoices", invoice);
         return "invoices-list";
     }
