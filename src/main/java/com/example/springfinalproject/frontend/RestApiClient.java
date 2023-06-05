@@ -32,4 +32,9 @@ public class RestApiClient {
         InvoiceDto[] responseDto = restTemplate.getForObject("http://localhost:8080/api/invoices", InvoiceDto[].class);
         return Arrays.asList(responseDto);
     }
+
+    public void addInvoiceHttpRequest(InvoiceDto invoiceDto){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForEntity("http://localhost:8080/api/invoices", invoiceDto, String.class);
+    }
 }

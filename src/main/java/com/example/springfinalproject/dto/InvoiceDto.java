@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class InvoiceDto {
 
-    @Column(unique = true)
+//    @Column(unique = true)
     private long id;
     private String number;
     private String name;

@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -41,39 +42,38 @@ public class InvoiceRestService {
     }
 
 
-    public InvoiceDto createInvoice(Long reservationId) {
-        Optional<RoomReservation> reservationOptional = roomReservationRepository.findById(reservationId);
-        if (reservationOptional.isPresent()) {
-            RoomReservation reservation = reservationOptional.get();
-            // Sprawdź, czy dla tej rezerwacji faktura już została wystawiona i rzuć wyjątkiem, ale lepiej by było
-            // wyświetlić stronkę z tą fakturą, ale to robi controler,
-            // a nie service i jak to zrobić?
-            if (invoiceRepository.existsByReservationId(reservationId)) {
-                throw new InvoiceAlreadyExistsException("Invoice already exists for reservation ID: " + reservationId);
-            }
-            ConferenceRoom room = reservation.getConferenceRoom();
-
-
-            // Tworzenie faktury
-            Invoice invoice = new Invoice();
-            invoice.setNumber(generateInvoiceNumber());
-            invoice.setName(reservation.getOrganisation().getName());
-            invoice.setNip(Long.valueOf(reservation.getOrganisation().getNip()));
-            invoice.setAddress(reservation.getOrganisation().getAddress());
-            invoice.setPostcode(reservation.getOrganisation().getPostcode());
-            invoice.setCity(reservation.getOrganisation().getCity());
-            invoice.setRoom_id(room.getId());
-            invoice.setValue(calculateInvoiceValue(reservation));
-            invoice.setDate(LocalDateTime.now());
-            invoice.setReservationId(reservationId);
-
-            // Zapis faktury
-            Invoice savedInvoice = invoiceRepository.save(invoice);
-
-            return invoiceMapper.mapToDto(savedInvoice);
-        } else {
-            return null;
+    public InvoiceDto createInvoice(InvoiceDto invoiceDto) {
+        Optional<RoomReservation> reservationOptional = roomReservationRepository.findById(invoiceDto.getReservationId());
+        if (reservationOptional.isEmpty()) {
+            throw new NoSuchElementException();
         }
+        RoomReservation reservation = reservationOptional.get();
+        // Sprawdź, czy dla tej rezerwacji faktura już została wystawiona i rzuć wyjątkiem, ale lepiej by było
+        // wyświetlić stronkę z tą fakturą, ale to robi controler,
+        // a nie service i jak to zrobić?
+        if (invoiceRepository.existsByReservationId(invoiceDto.getReservationId())) {
+            throw new InvoiceAlreadyExistsException("Invoice already exists for reservation ID: " + invoiceDto.getReservationId());
+        }
+        ConferenceRoom room = reservation.getConferenceRoom();
+
+
+        // Tworzenie faktury
+        Invoice invoice = new Invoice();
+        invoice.setNumber(generateInvoiceNumber());
+        invoice.setName(reservation.getOrganisation().getName());
+        invoice.setNip(Long.valueOf(reservation.getOrganisation().getNip()));
+        invoice.setAddress(reservation.getOrganisation().getAddress());
+        invoice.setPostcode(reservation.getOrganisation().getPostcode());
+        invoice.setCity(reservation.getOrganisation().getCity());
+        invoice.setRoom_id(room.getId());
+        invoice.setValue(calculateInvoiceValue(reservation));
+        invoice.setDate(LocalDateTime.now());
+        invoice.setReservationId(invoiceDto.getReservationId());
+
+        // Zapis faktury
+        Invoice savedInvoice = invoiceRepository.save(invoice);
+
+        return invoiceMapper.mapToDto(savedInvoice);
     }
 
     private String generateInvoiceNumber() {
@@ -107,7 +107,6 @@ public class InvoiceRestService {
         List<InvoiceDto> invoiceDtos = invoiceMapper.mapToDtos(invoiceRepository.findAll());
         return invoiceDtos;
     }
-
 
 
 }
