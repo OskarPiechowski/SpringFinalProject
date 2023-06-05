@@ -64,9 +64,9 @@ public class InvoiceController {
             InvoiceDto invoiceDto = new InvoiceDto();
             invoiceDto.setReservationId(reservationId);
             restApiClient.addInvoiceHttpRequest(invoiceDto);
-            model.addAttribute("message", "Dodano fakturę");
+            model.addAttribute("message", "Invoice added successfully");
         }catch (HttpClientErrorException.BadRequest e){
-            model.addAttribute("message", "Ta faktura została już wcześniej dodana");
+            model.addAttribute("message", "This invoice already exists. You can select another");
         }
         return "main-page";
     }
