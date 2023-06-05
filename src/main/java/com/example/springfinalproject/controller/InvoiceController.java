@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -59,9 +60,14 @@ public class InvoiceController {
 
     @PostMapping("/request-invoice")
     public String  createNewInvoice(@RequestParam long reservationId, Model model){
-        InvoiceDto invoiceDto = new InvoiceDto();
-        invoiceDto.setReservationId(reservationId);
-        restApiClient.addInvoiceHttpRequest(invoiceDto);
-        return "request-invoice";
+        try{
+            InvoiceDto invoiceDto = new InvoiceDto();
+            invoiceDto.setReservationId(reservationId);
+            restApiClient.addInvoiceHttpRequest(invoiceDto);
+            model.addAttribute("message", "Dodano fakturę");
+        }catch (HttpClientErrorException.BadRequest e){
+            model.addAttribute("message", "Ta faktura została już wcześniej dodana");
+        }
+        return "main-page";
     }
 }

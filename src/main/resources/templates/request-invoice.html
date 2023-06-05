@@ -6,7 +6,6 @@
 </head>
 <body>
 Podaj numer rezerwacji, dla której chcesz wystawić fakturę:
-<h3 th:text="${message}"></h3>
 <form id="invoiceForm" action="/request-invoice" method="post">
     <input type="number" id="reservationId" name="reservationId">
     <button type="submit">Wystaw fakturę</button>
